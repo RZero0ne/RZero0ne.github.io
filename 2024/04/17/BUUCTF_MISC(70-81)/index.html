@@ -1,0 +1,723 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://rzero0ne.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://rzero0ne.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://rzero0ne.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="MISC" />
+
+
+<link rel="canonical" href="https://rzero0ne.github.io/2024/04/17/BUUCTF_MISC(70-81)/">
+
+
+
+  <title>
+BUUCTF_MISC(70-81) - MISC - 做题记录 - Misc |
+RZero0ne =  = 答案在明天，每个明天</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">BUUCTF_MISC(70-81)
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2024-04-17 20:48:24">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-17T20:48:24+08:00">2024-04-17</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">RZero0ne</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/1.jpg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Misc/" itemprop="item" rel="index" title="分类于 Misc"><span itemprop="name">Misc</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Misc/course-1/" itemprop="item" rel="index" title="分类于 做题记录"><span itemprop="name">做题记录</span></a>
+<meta itemprop="position" content="2" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/MISC/" itemprop="item" rel="index" title="分类于 MISC"><span itemprop="name">MISC</span></a>
+<meta itemprop="position" content="3" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://rzero0ne.github.io/2024/04/17/BUUCTF_MISC(70-81)/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="RZero0ne">
+    <meta itemprop="description" content="答案在明天，每个明天, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="70actf新生赛2020swp"><a class="markdownIt-Anchor" href="#70actf新生赛2020swp">#</a> 70.[ACTF 新生赛 2020] swp</h3>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711629260893-612d3b36-cfda-4253-9876-d6cd144ceadd.png#averageHue=%23fcfcfb&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=150&amp;id=u7712ce76&amp;originHeight=187&amp;originWidth=601&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=10834&amp;status=done&amp;style=none&amp;taskId=ue2bc3101-0e11-483a-b038-82222f0d1ac&amp;title=&amp;width=480.8" alt="image.png"><br>
+ 导出 http 对象中发现有 zip，提取出来<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711629281506-14fcf6a7-5fa1-4ff8-bc3e-2fb1811a83a5.png#averageHue=%23f8f7f6&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=158&amp;id=u561d5323&amp;originHeight=198&amp;originWidth=906&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=17118&amp;status=done&amp;style=none&amp;taskId=u07eb8154-c7b6-455f-9210-73ac63fd452&amp;title=&amp;width=724.8" alt="image.png"><br>
+ 发现 zip 里有两个加密文件，010 里发现是伪加密<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711629413500-249925fc-ae32-49c0-ba25-2b04e57c48d6.png#averageHue=%23f7f6f6&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=110&amp;id=u26205284&amp;originHeight=138&amp;originWidth=400&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=12141&amp;status=done&amp;style=none&amp;taskId=u680a55c2-5562-454c-8676-6058bb5175e&amp;title=&amp;width=320" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711629500835-58193f2e-3a1f-424a-b8df-7b413470b7ce.png#averageHue=%23abc7bb&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=364&amp;id=uda6b1227&amp;originHeight=455&amp;originWidth=855&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=63669&amp;status=done&amp;style=none&amp;taskId=u67bf9871-5a0d-41aa-82d3-0083c97b37c&amp;title=&amp;width=684" alt="image.png"><br>
+ 把 01 修改为 00，即可打开两个文件<br>
+ flag 里没找到 flag<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711629578571-a04c6d5f-64df-442e-9e71-a35d417ef13b.png#averageHue=%23eeecea&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=642&amp;id=u06788387&amp;originHeight=803&amp;originWidth=1920&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=196807&amp;status=done&amp;style=none&amp;taskId=uc23da527-282e-4a30-abba-e7f0d86f244&amp;title=&amp;width=1536" alt="image.png"><br>
+ 在.flag.swp 中找到 flag<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711629597240-060db382-2ce0-4a10-a21b-4b9a47382d65.png#averageHue=%23f6f6f6&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=321&amp;id=uda1f2882&amp;originHeight=401&amp;originWidth=558&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=9397&amp;status=done&amp;style=none&amp;taskId=uda355ca3-4b02-4716-9818-71c93e70369&amp;title=&amp;width=446.4" alt="image.png"></p>
+<h3 id="71utctf2020docx"><a class="markdownIt-Anchor" href="#71utctf2020docx">#</a> 71.[UTCTF2020]docx</h3>
+<p>把 docx 文件后缀改为 rar<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711628200568-55cf7574-2b74-4131-9256-3bbf320f462f.png#averageHue=%23fcf5e5&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=222&amp;id=ub3af29f1&amp;originHeight=277&amp;originWidth=635&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=23215&amp;status=done&amp;style=none&amp;taskId=u1660aa55-1dd2-41c3-9085-03c36586eeb&amp;title=&amp;width=508" alt="image.png"><br>
+media 里找到 flag 图片<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711628142098-4380f394-8ca5-4375-b1b3-4796ec689519.png#averageHue=%23f0efef&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=536&amp;id=uc7bddf53&amp;originHeight=670&amp;originWidth=1188&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=116062&amp;status=done&amp;style=none&amp;taskId=ub8193b1b-f7e0-44a7-a921-a2de99ab628&amp;title=&amp;width=950.4" alt="image.png"></p>
+<h3 id="72gxyctf2019sxmgdghpcybiyxnlpw"><a class="markdownIt-Anchor" href="#72gxyctf2019sxmgdghpcybiyxnlpw">#</a> 72.[GXYCTF2019]SXMgdGhpcyBiYXNlPw==</h3>
+<p>base64 解密题目：Is this base?<br>
+flag.txt 里：<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711628286956-33e4e3d1-457e-4c1b-bd10-c95a47f92cbe.png#averageHue=%23efedeb&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=336&amp;id=u232577d4&amp;originHeight=420&amp;originWidth=617&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=38109&amp;status=done&amp;style=none&amp;taskId=uc372cf0a-63f9-4b2b-b261-c45f3c09c1f&amp;title=&amp;width=493.6" alt="image.png"><br>
+base64 解密发现出来的字符很奇怪，上网搜了发现文本是 base64 隐写而不是 base64 加密<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711628328876-e3fb815a-22a1-4b32-8571-0d53084ea16f.png#averageHue=%23faf7d4&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=709&amp;id=u0c55555d&amp;originHeight=886&amp;originWidth=1104&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=90634&amp;status=done&amp;style=none&amp;taskId=u5d646344-7789-4c53-a6d1-5c4856e3b1a&amp;title=&amp;width=883.2" alt="image.png"><br>
+ 利用脚本得到 flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line"></span><br><span class="line">def get_base64_diff_value(s1, s2):</span><br><span class="line">    base64chars = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span><br><span class="line">    res = 0</span><br><span class="line">    for i in range(len(s2)):</span><br><span class="line">        if s1[i] != s2[i]:</span><br><span class="line">            return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def solve_stego():</span><br><span class="line">    with open(&#x27;output328.txt&#x27;, &#x27;r&#x27;) as f:  # 修改为&#x27;r&#x27;模式</span><br><span class="line">        file_lines = f.readlines()</span><br><span class="line">        bin_str = &#x27;&#x27;</span><br><span class="line">        for line in file_lines:</span><br><span class="line">            steg_line = line.strip()  # 使用strip()移除换行符</span><br><span class="line">            norm_line = base64.b64encode(base64.b64decode(steg_line)).decode(&#x27;ascii&#x27;).strip()  # 使用base64模块进行编解码，并转换为字符串</span><br><span class="line">            diff = get_base64_diff_value(steg_line, norm_line)</span><br><span class="line">            print(diff)</span><br><span class="line">            pads_num = steg_line.count(&#x27;=&#x27;)</span><br><span class="line">            if diff:</span><br><span class="line">                bin_str += bin(diff)[2:].zfill(pads_num * 2)</span><br><span class="line">            else:</span><br><span class="line">                bin_str += &#x27;0&#x27; * pads_num * 2</span><br><span class="line">            print(goflag(bin_str))</span><br><span class="line"></span><br><span class="line">def goflag(bin_str):</span><br><span class="line">    res_str = &#x27;&#x27;</span><br><span class="line">    for i in range(0, len(bin_str), 8):</span><br><span class="line">        res_str += chr(int(bin_str[i:i + 8], 2))</span><br><span class="line">    return res_str</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    solve_stego()</span><br></pre></td></tr></table></figure>
+<p fazhazhenhaoting=""><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711629192682-1905f5aa-60ba-45d1-96ae-acdae0e37182.png#averageHue=%23fcfbfa&amp;clientId=u579708c9-233f-4&amp;from=paste&amp;height=182&amp;id=uac4a6ed6&amp;originHeight=227&amp;originWidth=373&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=14192&amp;status=done&amp;style=none&amp;taskId=uc2a0c4c1-600e-4822-936f-fd9a110b1b1&amp;title=&amp;width=298.4" alt="image.png"><br>
+GXY</p>
+<h3 id="73间谍启示录"><a class="markdownIt-Anchor" href="#73间谍启示录">#</a> 73. 间谍启示录</h3>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711630204061-a15281a5-3feb-4400-9c1b-627f4e54c447.png#averageHue=%23fdfbf9&amp;clientId=u694341c8-7081-4&amp;from=paste&amp;height=375&amp;id=u8e6922f6&amp;originHeight=469&amp;originWidth=583&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=44304&amp;status=done&amp;style=none&amp;taskId=u56e90d54-047b-4d6e-805b-74502aa656d&amp;title=&amp;width=466.4" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711632910127-d7af00a5-dbbf-4b33-b94c-afc5f70d8dc2.png#averageHue=%23292c35&amp;clientId=u7119ff9f-c1a8-4&amp;from=paste&amp;height=426&amp;id=uf94ddc69&amp;originHeight=532&amp;originWidth=445&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=147808&amp;status=done&amp;style=none&amp;taskId=u69583cf9-97ed-43f7-ac99-a1020e5ecbe&amp;title=&amp;width=356" alt="image.png"><br>
+ 分离出来了一个 rar 文件，<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711634263275-d6319e6c-9515-44a0-866e-8e5e6c2565c1.png#averageHue=%23f6f5f5&amp;clientId=u7119ff9f-c1a8-4&amp;from=paste&amp;height=558&amp;id=u27d484d3&amp;originHeight=698&amp;originWidth=608&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=29080&amp;status=done&amp;style=none&amp;taskId=ue58672c3-b280-4062-9048-62234fdda95&amp;title=&amp;width=486.4" alt="image.png"></p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711632892908-324fb197-ecce-4456-82d2-ee43be19c51b.png#averageHue=%23f7f6f6&amp;clientId=u7119ff9f-c1a8-4&amp;from=paste&amp;height=448&amp;id=ua81518c5&amp;originHeight=560&amp;originWidth=738&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=30829&amp;status=done&amp;style=none&amp;taskId=u8182cbdf-0c21-4824-9c4b-7019197ed51&amp;title=&amp;width=590.4" alt="image.png"></p>
+<h3 id="74喵喵喵"><a class="markdownIt-Anchor" href="#74喵喵喵">#</a> 74. 喵喵喵</h3>
+<p>用 stegsolve 看是不是 lsb 隐写，在 BGR 中发现有 png，保存下来</p>
+<h2 id="imagepng"><a class="markdownIt-Anchor" href="#imagepng">#</a> <img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711691532309-23419574-c180-492e-a3ca-f6cd00dab408.png#averageHue=%23dbd8d4&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=695&amp;id=u579efa6c&amp;originHeight=869&amp;originWidth=1100&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=237432&amp;status=done&amp;style=none&amp;taskId=u83cc336b-b7f6-4070-8221-8e026ac0073&amp;title=&amp;width=880" alt="image.png"></h2>
+<p>发现格式错误的 png 文件<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711693141633-a9bec40b-1557-4218-92c9-5268f46d98b3.png#averageHue=%23f2eee5&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=311&amp;id=u0888c1e2&amp;originHeight=389&amp;originWidth=662&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=42883&amp;status=done&amp;style=none&amp;taskId=ud58b7b86-e1ae-43a7-8677-583b0ed93eb&amp;title=&amp;width=529.6" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711693556591-86fb644d-df38-4372-9de5-b5de5ae0ddab.png#averageHue=%23f5f2ee&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=343&amp;id=u1f799e0a&amp;originHeight=429&amp;originWidth=640&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=11693&amp;status=done&amp;style=none&amp;taskId=u49de345d-d272-4285-8159-61250cb9f4e&amp;title=&amp;width=512" alt="image.png"><br>
+ 修改完可以看到出现了半个二维码</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711692444747-04f27016-41f2-4822-acb1-9eef94bf178c.png#averageHue=%23ecebeb&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=439&amp;id=u51197530&amp;originHeight=549&amp;originWidth=769&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=32885&amp;status=done&amp;style=none&amp;taskId=ubf343145-7abf-4e48-859a-a486dcf7ba5&amp;title=&amp;width=615.2" alt="image.png"></p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711692303279-7ef2b694-6411-4c14-9df9-f6f32f5ace3f.png#averageHue=%23efeeee&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=472&amp;id=u6c55e678&amp;originHeight=590&amp;originWidth=740&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=27902&amp;status=done&amp;style=none&amp;taskId=uef46d411-7029-4c58-b069-5cf807fdaa0&amp;title=&amp;width=592" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711693663987-d915887a-4007-44f4-96d7-cd2170819128.png#averageHue=%23f0f2f4&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=292&amp;id=uacabaf58&amp;originHeight=365&amp;originWidth=489&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=2617&amp;status=done&amp;style=none&amp;taskId=uddeb6407-77f0-47ab-bf81-e2baeb6bacd&amp;title=&amp;width=391.2" alt="image.png"><br>
+ 用脚本爆破出宽高<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711694126242-6b52e135-81c9-416f-ab45-d9467215e0e7.png#averageHue=%23110f0e&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=145&amp;id=u37679a41&amp;originHeight=181&amp;originWidth=962&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=23310&amp;status=done&amp;style=none&amp;taskId=u97d759b0-8eca-4862-b842-81581a6cd21&amp;title=&amp;width=769.6" alt="image.png"><br>
+ 得到了完整的二维码，里面有一个百度网盘链接</p>
+<h2 id="imagepng-2"><a class="markdownIt-Anchor" href="#imagepng-2">#</a> <img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711694577340-fb5a0dfc-40cb-43f1-925b-93b9e5ef57e1.png#averageHue=%23d7d6d6&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=526&amp;id=u469c7420&amp;originHeight=657&amp;originWidth=421&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=77381&amp;status=done&amp;style=none&amp;taskId=u05f459d0-f257-4a89-9fbe-c8d84e71dc4&amp;title=&amp;width=336.8" alt="image.png"></h2>
+<p>下载得到一个 rar 文件，解压得到一个 txt 文件<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711694719684-47de8a1c-09f6-4996-b72f-4643c74f9578.png#averageHue=%23f3f2f2&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=128&amp;id=ufeece708&amp;originHeight=160&amp;originWidth=481&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=5674&amp;status=done&amp;style=none&amp;taskId=udbf040b2-83dd-4d53-910e-5aaddd21e4d&amp;title=&amp;width=384.8" alt="image.png"><br>
+010 查看无果，也没有发现零宽字符之类的，想到 ntfs 数据流，用 winrar 重新解压一下压缩包<br>
+再打开 ntfsstreamseditor.exe 搜索一下 flag 文件，导出文件<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711694990219-7d870be2-a1f9-45c4-b871-6d2142eae399.png#averageHue=%23f6f6f6&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=690&amp;id=u81fbf470&amp;originHeight=863&amp;originWidth=1088&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=173790&amp;status=done&amp;style=none&amp;taskId=uf93792a7-f2e2-429b-8167-32685062324&amp;title=&amp;width=870.4" alt="image.png"><br>
+ 得到了一个 pyc 文件，反编译一下<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711695257025-8e841dd7-e07e-44c9-a4d2-8d1c8f91197e.png#averageHue=%23fbf9f8&amp;clientId=u12e7089d-c918-4&amp;from=paste&amp;height=63&amp;id=u98e0b23f&amp;originHeight=79&amp;originWidth=450&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=4695&amp;status=done&amp;style=none&amp;taskId=u6c77b130-f56f-4908-bf67-27a19d3d198&amp;title=&amp;width=360" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711695467147-e09a8b17-f74e-4de1-a409-50cd6169ffc3.png#averageHue=%23282a33&amp;clientId=uf6503e29-5885-4&amp;from=paste&amp;height=608&amp;id=ube0d6ea8&amp;originHeight=760&amp;originWidth=482&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=71613&amp;status=done&amp;style=none&amp;taskId=u27509231-af6a-4c5e-8a08-43382471e1a&amp;title=&amp;width=385.6" alt="image.png"><br>
+ 这段代码是一个简单的加密脚本，主要功能是对一个字符串（标记为 flag）进行加密，然后将加密后的结果以列表形式返回。加密过程如下：</p>
+<ol>
+<li>定义一个名为 encode 的加密函数，该函数不接受任何参数。</li>
+<li>在函数内部，有一个名为 flag 的字符串，这里用’*' 代替，实际使用时应替换为具体的字符串。</li>
+<li>初始化一个空列表 ciphertext，用于存储加密后的字符。</li>
+<li>使用 for 循环遍历 flag 字符串中的每个字符。<br>
+对于每个字符，首先计算它的 ASCII 值与其索引（i）的异或（XOR）结果，然后将该结果转换回字符（s）。<br>
+接下来，根据字符的索引是奇数还是偶数，将字符 s 的 ASCII 值分别加上 10 或减去 10。<br>
+将处理后的 ASCII 值转换为字符串，并添加到 ciphertext 列表中。</li>
+<li>最后，将 ciphertext 列表反转，并返回。<br>
+脚本的最后部分给出了一个名为 ciphertext 的列表，这是使用上述加密函数处理某个特定 flag 字符串后的输出结果。<br>
+要理解或逆向这个加密过程，需要关注几个关键点：<br>
+异或操作是可逆的，即如果你知道原始字符和索引，你可以通过再次执行异或操作来恢复原始字符。<br>
+加 10 或减 10 的操作也是可逆的，只需相反操作即可恢复原始值。<br>
+最终的 ciphertext 列表是反转的，因此在尝试解密时，应首先将其反转回原始顺序。<br>
+这段代码的目的可能是为了创建一个简单的加密机制，用于隐藏或保护某些敏感信息。</li>
+</ol>
+<p>根据加密过程编写解密脚本，网上复制了一个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#Author: mochu7</span><br><span class="line">def decode(arg1):</span><br><span class="line">    ciphertext = arg1[::-1]</span><br><span class="line">    flag = &#x27;&#x27;</span><br><span class="line">    for i in range(len(ciphertext)):</span><br><span class="line">       if i % 2 == 0:</span><br><span class="line">          s = int(ciphertext[i]) - 10</span><br><span class="line">       else:</span><br><span class="line">          s = int(ciphertext[i]) + 10</span><br><span class="line">       s = s ^ i</span><br><span class="line">       flag += chr(s)</span><br><span class="line">    print(flag)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    ciphertext = [</span><br><span class="line">    &#x27;96&#x27;,</span><br><span class="line">    &#x27;65&#x27;,</span><br><span class="line">    &#x27;93&#x27;,</span><br><span class="line">    &#x27;123&#x27;,</span><br><span class="line">    &#x27;91&#x27;,</span><br><span class="line">    &#x27;97&#x27;,</span><br><span class="line">    &#x27;22&#x27;,</span><br><span class="line">    &#x27;93&#x27;,</span><br><span class="line">    &#x27;70&#x27;,</span><br><span class="line">    &#x27;102&#x27;,</span><br><span class="line">    &#x27;94&#x27;,</span><br><span class="line">    &#x27;132&#x27;,</span><br><span class="line">    &#x27;46&#x27;,</span><br><span class="line">    &#x27;112&#x27;,</span><br><span class="line">    &#x27;64&#x27;,</span><br><span class="line">    &#x27;97&#x27;,</span><br><span class="line">    &#x27;88&#x27;,</span><br><span class="line">    &#x27;80&#x27;,</span><br><span class="line">    &#x27;82&#x27;,</span><br><span class="line">    &#x27;137&#x27;,</span><br><span class="line">    &#x27;90&#x27;,</span><br><span class="line">    &#x27;109&#x27;,</span><br><span class="line">    &#x27;99&#x27;,</span><br><span class="line">    &#x27;112&#x27;]</span><br><span class="line">    decode(ciphertext)</span><br></pre></td></tr></table></figure>
+<p Y@e_Cl3veR_C1Ever!="">得到 flag</p>
+<h3 id="75小易的u盘"><a class="markdownIt-Anchor" href="#75小易的u盘">#</a> 75. 小易的 U 盘</h3>
+<p>下载下来一个 iso 文件，用 010 查看发现文件头是 rar，修改一下文件后缀<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711696877024-dd6fbf1d-4855-41f2-93b2-9d2d714b7b46.png#averageHue=%233e3c36&amp;clientId=uf6503e29-5885-4&amp;from=paste&amp;height=280&amp;id=ucb77aba1&amp;originHeight=350&amp;originWidth=774&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=58627&amp;status=done&amp;style=none&amp;taskId=ud804a856-e2a8-43c4-9ff2-f59694e298a&amp;title=&amp;width=619.2" alt="image.png"><br>
+ 解压下来发现有很多文件<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711696943751-0869641a-38b8-4f92-b935-e4c11fbd75f5.png#averageHue=%23f8f6f4&amp;clientId=uf6503e29-5885-4&amp;from=paste&amp;height=497&amp;id=ua4772c34&amp;originHeight=621&amp;originWidth=518&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=54995&amp;status=done&amp;style=none&amp;taskId=u2c230f29-e8c9-41db-80b0-d0b1e84bc87&amp;title=&amp;width=414.4" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711696956351-441e3990-54e9-4fd7-bac9-7e8e1966afa2.png#averageHue=%23f8f6f5&amp;clientId=uf6503e29-5885-4&amp;from=paste&amp;height=420&amp;id=ua19b3939&amp;originHeight=525&amp;originWidth=375&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=40064&amp;status=done&amp;style=none&amp;taskId=u742ba451-0c80-44d0-85d2-60499267ea9&amp;title=&amp;width=300" alt="image.png"><br>
+ 打开 autorun.inf 看到</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711697654869-4fbc6b8f-defc-4a87-a40b-5f413e0a893a.png#averageHue=%23f2f0ef&amp;clientId=uf6503e29-5885-4&amp;from=ui&amp;id=ud8e09d01&amp;originHeight=239&amp;originWidth=742&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=32588&amp;status=done&amp;style=none&amp;taskId=u0b5bf835-596e-4d61-a67e-41fd87364ec&amp;title=" alt="屏幕截图 2024-03-29 152959.png"><br>
+ 用 ida32 位打开，main 函数中就有 flag 明文<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711697643636-e9377602-1f30-43c9-938c-608e48873d13.png#averageHue=%23f8f7f6&amp;clientId=uf6503e29-5885-4&amp;from=paste&amp;height=338&amp;id=u31cf0d3e&amp;originHeight=423&amp;originWidth=1735&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=89000&amp;status=done&amp;style=none&amp;taskId=u3c0acf4c-feae-4807-8016-561ef2a5d2b&amp;title=&amp;width=1388" alt="image.png"></p>
+<h3 id="76roarctf2019黄金6年"><a class="markdownIt-Anchor" href="#76roarctf2019黄金6年">#</a> 76.[RoarCTF2019] 黄金 6 年</h3>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711698992480-630ea030-50a7-45a1-843a-88fa21fa22b2.png#averageHue=%23c1c0bf&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=738&amp;id=u332f11d7&amp;originHeight=922&amp;originWidth=1602&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=405268&amp;status=done&amp;style=none&amp;taskId=u84e14cc5-56e0-47ae-8b8e-c8f8dc83a60&amp;title=&amp;width=1281.6" alt="image.png"><br>
+ 扫描一下二维码，得到 key1:i<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711699281185-a387ba30-ec62-4621-be60-cd0a0839c9e8.png#averageHue=%23f7f6f6&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=496&amp;id=u2d0643ee&amp;originHeight=620&amp;originWidth=421&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=44546&amp;status=done&amp;style=none&amp;taskId=u793f3711-dbe5-4601-9866-41b6f0a8489&amp;title=&amp;width=336.8" alt="image.png"></p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711699397767-f5f0d53a-b38f-4e85-b7b4-637b2f553938.png#averageHue=%23c4b176&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=730&amp;id=uf1b8cda3&amp;originHeight=913&amp;originWidth=1366&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=600642&amp;status=done&amp;style=none&amp;taskId=u5727b48f-d30a-4dae-b0b7-e654a4f0ccb&amp;title=&amp;width=1092.8" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711699451164-5866ff36-74aa-4828-ac1e-3cf1ed68a450.png#averageHue=%23ede8e2&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=588&amp;id=ubb8f30c5&amp;originHeight=735&amp;originWidth=424&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=128194&amp;status=done&amp;style=none&amp;taskId=u6861d6d0-1c7c-48d2-b6b5-dcf509f6189&amp;title=&amp;width=339.2" alt="image.png"><br>
+ 得到 key2:want<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711699547897-5717f44f-1196-4224-a5af-777ee50dde91.png#averageHue=%23eeeeee&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=638&amp;id=u38642585&amp;originHeight=798&amp;originWidth=798&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=220283&amp;status=done&amp;style=none&amp;taskId=uf7d0931c-f0e4-4c33-a93e-37317b223fe&amp;title=&amp;width=638.4" alt="image.png"><br>
+ 得到第三个二维码，</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711699610671-db771436-0227-42d8-9c52-015bb226af79.png#averageHue=%23f6f5f5&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=445&amp;id=u36faa8d0&amp;originHeight=556&amp;originWidth=433&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=48706&amp;status=done&amp;style=none&amp;taskId=u93b3fbf9-a5ca-460d-970e-4aaea952f9e&amp;title=&amp;width=346.4" alt="image.png"><br>
+key3:play<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711700911839-b0ace84d-053d-46e7-aa68-81992aeac33b.png#averageHue=%23cccbcc&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=434&amp;id=u44827f8c&amp;originHeight=542&amp;originWidth=968&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=98383&amp;status=done&amp;style=none&amp;taskId=u248cccc4-da75-4cfc-b397-eeca5c45be7&amp;title=&amp;width=774.4" alt="image.png"> 扫描出来是 key4:ctf<br>
+iwantplayctf<br>
+ 把 mp4 文件拖到 010，拉到末尾发现一段 base64 密文，解密发现是一个 rar 文件<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711701089825-57822c94-92e9-44a4-bbd1-d370f94e3945.png#averageHue=%23fbfba8&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=403&amp;id=u99c03ce4&amp;originHeight=504&amp;originWidth=991&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=86328&amp;status=done&amp;style=none&amp;taskId=ua4cc49ed-500a-4521-b2f9-465f8a0e6a2&amp;title=&amp;width=792.8" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711701069708-e152e98a-e404-40ad-b5b6-d933b323983c.png#averageHue=%23fdfcfb&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=591&amp;id=uaf7c9c05&amp;originHeight=739&amp;originWidth=1765&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=115699&amp;status=done&amp;style=none&amp;taskId=u6e77e0b4-9ed8-49a9-9450-0e6621d2c63&amp;title=&amp;width=1412" alt="image.png"><br>
+ 打开 rar，输入之前得到的密码，得到 flag<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711701283070-756f88df-4fc9-482f-9d2c-f45c0793f2f5.png#averageHue=%23f3f2f1&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=105&amp;id=u56ceec4a&amp;originHeight=131&amp;originWidth=390&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=4137&amp;status=done&amp;style=none&amp;taskId=u7bc29ac5-9944-46a8-8ad9-a394289dd31&amp;title=&amp;width=312" alt="image.png"></p>
+<h3 id="77wustctf2020爬"><a class="markdownIt-Anchor" href="#77wustctf2020爬">#</a> 77.[WUSTCTF2020] 爬</h3>
+<p>010 查看<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711701567860-379ddff5-1b40-454e-ae74-d7a2f149b714.png#averageHue=%23f2eda2&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=317&amp;id=ue1611de4&amp;originHeight=396&amp;originWidth=815&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=68390&amp;status=done&amp;style=none&amp;taskId=u10295bbb-f195-47fe-aaea-f9c8205841e&amp;title=&amp;width=652" alt="image.png"><br>
+ 文件后缀改成 pdf<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711701632516-11971300-6e28-46c3-b5ad-3f142a3c7590.png#averageHue=%23785228&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=594&amp;id=udb0c925c&amp;originHeight=743&amp;originWidth=791&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=317570&amp;status=done&amp;style=none&amp;taskId=udb0ca392-6ee9-47a1-8540-e7024120f51&amp;title=&amp;width=632.8" alt="image.png"><br>
+ 删除上面的图片，得到了下图<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711701689254-f31c8e1c-3338-4a8c-b47d-88b2d216f2c6.png#averageHue=%23f6f6f5&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=166&amp;id=ue8cad030&amp;originHeight=208&amp;originWidth=1315&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=47852&amp;status=done&amp;style=none&amp;taskId=u0d0e2e29-0a46-4fd0-8182-285d910a5fd&amp;title=&amp;width=1052" alt="image.png"><br>
+ 把这段 16 进制提取出来解密得到 flag<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711701847413-0f2a36d3-5da3-42fb-957c-d43e07bd4652.png#averageHue=%23fcfcfb&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=460&amp;id=u81a43374&amp;originHeight=575&amp;originWidth=1458&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=26725&amp;status=done&amp;style=none&amp;taskId=u031aba35-c616-4f55-8987-8569d2fc469&amp;title=&amp;width=1166.4" alt="image.png"></p>
+<h3 id="78wustctf2020alison_likes_jojo"><a class="markdownIt-Anchor" href="#78wustctf2020alison_likes_jojo">#</a> 78.[WUSTCTF2020]alison_likes_jojo</h3>
+<p>解压得到：<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711702027103-e336dc4f-c2bf-4692-a9ed-2507aa649440.png#averageHue=%23edecec&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=333&amp;id=u48271bd6&amp;originHeight=416&amp;originWidth=467&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=53436&amp;status=done&amp;style=none&amp;taskId=ue87f4b65-ce6e-4928-b6b0-77474bfdc12&amp;title=&amp;width=374" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711702053143-46d44255-297a-449c-a9e5-53f7edcc1adb.png#averageHue=%23edecec&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=300&amp;id=u448536ba&amp;originHeight=416&amp;originWidth=467&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=53436&amp;status=done&amp;style=none&amp;taskId=u06223eaa-23c0-400a-9e11-52089319890&amp;title=&amp;width=337" alt="image.png"><br>
+boki 里面发现 zip 文件头，binwalk 或者 foremost 分离出来<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711702179174-62f0a762-e1f8-49fd-8c55-9662f1830d59.png#averageHue=%23d2a29f&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=703&amp;id=u89983fa3&amp;originHeight=879&amp;originWidth=786&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=125023&amp;status=done&amp;style=none&amp;taskId=u10870239-374d-4639-b96d-7afd464c35a&amp;title=&amp;width=629" alt="image.png"><br>
+ 分离出来的 zip 需要密码<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711702385815-4dbc762d-ef39-4da9-8f1a-f6a81c02c8fa.png#averageHue=%23f5f5f4&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=162&amp;id=u18d35eb5&amp;originHeight=203&amp;originWidth=445&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=18088&amp;status=done&amp;style=none&amp;taskId=u5b2f51e0-6e99-4167-9ec9-8bbc179676d&amp;title=&amp;width=356" alt="image.png"><br>
+ 真加密，需要找到密码<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711702436350-0b723cde-31db-43e7-a275-591cedb6fbf6.png#averageHue=%2379be76&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=238&amp;id=ue2094634&amp;originHeight=297&amp;originWidth=689&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=45031&amp;status=done&amp;style=none&amp;taskId=u4f3684c4-fe07-4575-bcde-a59f0e982ad&amp;title=&amp;width=551.2" alt="image.png"><br>
+ 爆破出密码<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711702777721-d1877fb2-d5a9-436c-b43f-b5970c890e3e.png#averageHue=%23eaeae9&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=188&amp;id=u2df41d33&amp;originHeight=235&amp;originWidth=513&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=37094&amp;status=done&amp;style=none&amp;taskId=u18a49f0e-8820-4f82-98ad-e2b104dcfbd&amp;title=&amp;width=410.4" alt="image.png"><br>
+ 得到 beisi.txt，根据名字可以知道这段是 base64 编码<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711702818214-8d2d19d5-cc86-417c-8499-fde4c8a2fe7e.png#averageHue=%23f2f1f0&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=89&amp;id=ubcbd472c&amp;originHeight=111&amp;originWidth=436&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=5342&amp;status=done&amp;style=none&amp;taskId=u874578e1-f8cc-42b2-b96e-bcb45e476fd&amp;title=&amp;width=348.8" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711702878192-22f072a4-4648-473c-89a4-c42d4ff715cf.png#averageHue=%23f9f9f8&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=566&amp;id=ub23f8ba5&amp;originHeight=707&amp;originWidth=898&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=45198&amp;status=done&amp;style=none&amp;taskId=u09d08b87-e04b-41e4-b359-54479359468&amp;title=&amp;width=718.4" alt="image.png"><br>
+ 得到 killerqueen<br>
+ 还有一个 jljy.jpg，现在我们有了密码，想到用 outguss 或者 steghide<br>
+ 拖到 kali 里，用 steghide 没有拿到 flag，用 outguess 得到 flag<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711703079355-0252b63f-9049-464c-9c86-8aaea9fe8722.png#averageHue=%232c303b&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=81&amp;id=u65a8a696&amp;originHeight=101&amp;originWidth=331&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=28595&amp;status=done&amp;style=none&amp;taskId=u23a1fa3c-52c7-451b-9ee5-366429a70f5&amp;title=&amp;width=264.8" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711703013675-8f7982f2-7bbc-49d0-a26a-75d95fc1a13f.png#averageHue=%23272b35&amp;clientId=u7807647d-2215-4&amp;from=paste&amp;height=259&amp;id=u7d0ceefd&amp;originHeight=324&amp;originWidth=419&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=64179&amp;status=done&amp;style=none&amp;taskId=u9f9ed772-44ba-496a-afd7-4e424bee185&amp;title=&amp;width=335.2" alt="image.png"></p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711705974069-c8236ac7-cf1c-49a3-9342-62c503a9b4b4.png#averageHue=%23eae9e8&amp;clientId=u4e4175bd-d2d4-4&amp;from=paste&amp;height=96&amp;id=u62d23261&amp;originHeight=120&amp;originWidth=537&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=9064&amp;status=done&amp;style=none&amp;taskId=uc710acae-92b6-44f7-88c4-14efa84fb7c&amp;title=&amp;width=429.6" alt="image.png"></p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711706826759-dc61830b-f656-4ffd-84e6-481edf2d30c1.png#averageHue=%23fcfbf9&amp;clientId=u4e4175bd-d2d4-4&amp;from=paste&amp;height=232&amp;id=ucdd35e76&amp;originHeight=290&amp;originWidth=969&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=37536&amp;status=done&amp;style=none&amp;taskId=u30746bc6-43d9-484c-b343-70fb4e3d55f&amp;title=&amp;width=775.2" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711706868320-783d1461-56bf-4ef9-ae18-01aff00b4384.png#averageHue=%23f7f6f5&amp;clientId=u4e4175bd-d2d4-4&amp;from=paste&amp;height=623&amp;id=u36ad7e57&amp;originHeight=779&amp;originWidth=1303&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=111260&amp;status=done&amp;style=none&amp;taskId=ua47922ed-8dba-42fc-a6f2-7aaaa82094f&amp;title=&amp;width=1042.4" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> __stdcall sub_401090(HWND hWnd, <span class="built_in">int</span> a2, <span class="built_in">int</span> a3, <span class="built_in">int</span> a4)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">int</span> v4; // eax</span><br><span class="line">  char Source[<span class="number">260</span>]; // [esp+50h] [ebp-<span class="number">3</span>10h] BYREF</span><br><span class="line">  _BYTE Text[<span class="number">257</span>]; // [esp+154h] [ebp-20Ch] BYREF</span><br><span class="line">  __int16 v8; // [esp+255h] [ebp-10Bh]</span><br><span class="line">  char v9; // [esp+257h] [ebp-109h]</span><br><span class="line">  <span class="built_in">int</span> Value; // [esp+258h] [ebp-108h]</span><br><span class="line">  CHAR String[<span class="number">260</span>]; // [esp+25Ch] [ebp-104h] BYREF</span><br><span class="line"></span><br><span class="line">  memset(String, <span class="number">0</span>, sizeof(String));</span><br><span class="line">  Value = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( a2 == <span class="number">16</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    DestroyWindow(hWnd);</span><br><span class="line">    PostQuitMessage(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> ( a2 == <span class="number">273</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( a3 == <span class="number">1000</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      GetDlgItemTextA(hWnd, <span class="number">1002</span>, String, <span class="number">260</span>);</span><br><span class="line">      strlen(String);</span><br><span class="line">      <span class="keyword">if</span> ( strlen(String) &gt; <span class="number">6</span> )</span><br><span class="line">        ExitProcess(<span class="number">0</span>);</span><br><span class="line">      v4 = atoi(String);</span><br><span class="line">      Value = v4 + <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">if</span> ( v4 == <span class="number">122</span> &amp;&amp; String[<span class="number">3</span>] == <span class="number">120</span> &amp;&amp; String[<span class="number">5</span>] == <span class="number">122</span> &amp;&amp; String[<span class="number">4</span>] == <span class="number">121</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        strcpy(Text, <span class="string">&quot;flag&quot;</span>);</span><br><span class="line">        memset(&amp;Text[<span class="number">5</span>], <span class="number">0</span>, 0xFCu);</span><br><span class="line">        v8 = <span class="number">0</span>;</span><br><span class="line">        v9 = <span class="number">0</span>;</span><br><span class="line">        _itoa(Value, Source, <span class="number">10</span>);</span><br><span class="line">        strcat(Text, <span class="string">&quot;&#123;&quot;</span>);</span><br><span class="line">        strcat(Text, Source);</span><br><span class="line">        strcat(Text, <span class="string">&quot;_&quot;</span>);</span><br><span class="line">        strcat(Text, <span class="string">&quot;Buff3r_0v3rf|0w&quot;</span>);</span><br><span class="line">        strcat(Text, <span class="string">&quot;&#125;&quot;</span>);</span><br><span class="line">        MessageBoxA(<span class="number">0</span>, Text, <span class="string">&quot;well done&quot;</span>, <span class="number">0</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      SetTimer(hWnd, 1u, 0x3E8u, TimerFunc);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( a3 == <span class="number">1001</span> )</span><br><span class="line">      KillTimer(hWnd, 1u);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>if ( v4 == 122 &amp;&amp; String[3] == 120 &amp;&amp; String[5] == 122 &amp;&amp; String[4] == 121 )<br>
+ 输入的字符长度不能大于 6，否则结束程序，v10 被 atoi () 函数转为数字整型并且 + 1，那么满足条件的 v10 应该为 122，v12、v13、v14 对应的 Ascii 字符为 xyz，所以输入 122xyz 就能得到 flag<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711708074793-8649aa7b-2894-42d5-9892-6deacf9019d9.png#averageHue=%23ebebeb&amp;clientId=u4e4175bd-d2d4-4&amp;from=paste&amp;height=282&amp;id=uc538de7f&amp;originHeight=352&amp;originWidth=515&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=23734&amp;status=done&amp;style=none&amp;taskId=ubce87af9-fd98-42bd-a97f-23ec98b2a1f&amp;title=&amp;width=412" alt="image.png"></p>
+<h3 id="79弱口令"><a class="markdownIt-Anchor" href="#79弱口令">#</a> 79. 弱口令</h3>
+<p>打开 zip 发现注释中有隐藏的信息<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711708470312-a8fc54b9-ba6f-4511-8abc-51360e8619a8.png#averageHue=%23f4f4f4&amp;clientId=u4e4175bd-d2d4-4&amp;from=paste&amp;height=733&amp;id=ub436f75b&amp;originHeight=916&amp;originWidth=942&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=95329&amp;status=done&amp;style=none&amp;taskId=u3db4220f-108d-4f04-80dc-e694f6a0103&amp;title=&amp;width=753.6" alt="image.png"><br>
+ 复制到 sublime 然后全选发现有一段摩斯电码，解密出 HELL0FORUM<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711708958871-8f392bbf-d6b3-4022-89c3-35f6d234d0d3.png#averageHue=%23f8f8f7&amp;clientId=u4e4175bd-d2d4-4&amp;from=paste&amp;height=260&amp;id=iB4D4&amp;originHeight=325&amp;originWidth=703&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=16669&amp;status=done&amp;style=none&amp;taskId=u2fa27b7e-05ff-4cdc-a1ac-fef4e50cda0&amp;title=&amp;width=562.4" alt="image.png"><br>
+ 题目 python 利用 cloacked-pixel-master 得到 flag<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711713884062-6c10a145-47e9-4393-843f-802a4888f6f5.png#averageHue=%23f7f7f7&amp;clientId=ubce86cc4-d048-4&amp;from=paste&amp;height=409&amp;id=udfc966a0&amp;originHeight=511&amp;originWidth=742&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=31568&amp;status=done&amp;style=none&amp;taskId=u6deedaa1-bd5f-4205-b253-8e43018e877&amp;title=&amp;width=593.6" alt="image.png"></p>
+<h3 id="80安洵杯-2019吹着贝斯扫二维码"><a class="markdownIt-Anchor" href="#80安洵杯-2019吹着贝斯扫二维码">#</a> 80.[安洵杯 2019] 吹着贝斯扫二维码</h3>
+<p>下载压缩包解压得到这么一些文件，可以看到一堆未知类型文件和一个 flag.zip<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711811092129-a9c63be3-77eb-409a-904b-6b0b60b2979c.png#averageHue=%23faf9f7&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=681&amp;id=uef27c907&amp;originHeight=851&amp;originWidth=715&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=91824&amp;status=done&amp;style=none&amp;taskId=u9406f263-879e-408b-a3a3-2192839a38e&amp;title=&amp;width=572" alt="image.png"><br>
+ 把这些没有拓展名的文件用 010Editor 打开，发现都是 jpg 类型文件<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711811194507-44337a8c-90af-45e0-a5de-e526b7f55855.png#averageHue=%233c3a34&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=272&amp;id=u8556952e&amp;originHeight=340&amp;originWidth=907&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=47756&amp;status=done&amp;style=none&amp;taskId=u4fce66ef-2ac4-4e3e-b329-01abfc72189&amp;title=&amp;width=725.6" alt="image.png"><br>
+ 需要给这些文件添加拓展名，直接使用 cmd 下的 ren 命令批量重命名，添加.jpg 拓展名。</p>
+<div class="note info">
+<p>命令：ren * *.jpg<br>
+// 这条命令会把此目录下所有文件重命名，所以使用的时候注意目录位置<br>
+<a target="_blank" rel="noopener" href="//xn--flag-k54h391avukllth95cna306c.xn--zip-nd9d00a50vnwam17hld0e9cta"> // 还有注意这里的 flag.zip 文件也被重命名</a>，改回.zip 后缀就行</p>
+</div>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711811270389-b27c6fe1-7d4c-4a54-a09e-064bb431f177.png#averageHue=%23848383&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=443&amp;id=u5893b478&amp;originHeight=554&amp;originWidth=990&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=83022&amp;status=done&amp;style=none&amp;taskId=u25c6cea8-f385-4eb6-9588-30264b12825&amp;title=&amp;width=792" alt="image.png"><br>
+ 发现了是二维码碎片，需要手动拼接。但总共 36 张碎片，真要一张张硬拼难度太大了，基本上不太可能完成，所以推测图片中应该有其他隐含图片编号的信息。但图片中没有可以直接利用的信息，用 010Editor 查看文件，发现文件尾 FFD9 之后还有冗余信息，是一个数字，每张图片都有这个数字且都不一样，猜测这应该就是图片编号了<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711812730501-b9c8f9ab-a745-4db7-9cf6-9e48ae3b2b76.png#averageHue=%233c3934&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=313&amp;id=u1bed5af1&amp;originHeight=391&amp;originWidth=816&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=58753&amp;status=done&amp;style=none&amp;taskId=u957df58c-e405-4691-93d5-3516091264e&amp;title=&amp;width=652.8" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment">#目录路径</span></span><br><span class="line">dir_name = <span class="string">r&quot;./&quot;</span></span><br><span class="line"><span class="comment">#获取目录下文件名列表</span></span><br><span class="line">dir_list = os.listdir(<span class="string">&#x27;./&#x27;</span>)</span><br><span class="line"><span class="comment">#print(dir_list)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#从列表中依次读取文件</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> dir_list:</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;.jpg&#x27;</span> <span class="keyword">in</span> file:</span><br><span class="line">        f=<span class="built_in">open</span>(file ,<span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">        n1 = <span class="built_in">str</span>(f.read())</span><br><span class="line">        n2 = n1[-<span class="number">3</span>:]	</span><br><span class="line">        <span class="comment">#经过测试发现这里要读取最后3个字节，因为最后还有一个多余的字节，不知道是不是转字符串的原因导致在末尾多了一个字符</span></span><br><span class="line">        <span class="comment">#print(file) #输出文件内容</span></span><br><span class="line">        <span class="comment">#print(n2)</span></span><br><span class="line">        f.close()	<span class="comment">#先关闭文件才能重命名，否则会报`文件被占用`错误</span></span><br><span class="line">        os.rename(file,n2+<span class="string">&#x27;.jpg&#x27;</span>)	<span class="comment">#重命名文件</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711813930926-5d8c56d1-b26c-4df6-a7d6-f14f6c533125.png#averageHue=%23d5d5d4&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=434&amp;id=ud743428f&amp;originHeight=542&amp;originWidth=982&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=75441&amp;status=done&amp;style=none&amp;taskId=u0af5a30d-2b62-47ec-a8b7-99b9985379d&amp;title=&amp;width=785.6" alt="image.png"></p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711720318358-e97134a3-fd34-4582-b7f5-e3151148ea9f.png#averageHue=%238c8c8c&amp;clientId=u49f8b4c8-cdb3-4&amp;from=paste&amp;height=482&amp;id=ud7cdb299&amp;originHeight=708&amp;originWidth=704&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=117755&amp;status=done&amp;style=none&amp;taskId=u2bd74713-82b7-4a14-ba1a-d8b3631760d&amp;title=&amp;width=479" alt="image.png"><br>
+BASE Family Bucket ???<br>
+85-&gt;64-&gt;85-&gt;13-&gt;16-&gt;32<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711816119536-a9842a02-430f-4b92-b3c9-ff34efea0fdb.png#averageHue=%23f7f6f6&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=487&amp;id=ucbbc43e7&amp;originHeight=609&amp;originWidth=368&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=30405&amp;status=done&amp;style=none&amp;taskId=uab3bdad2-33a2-44ce-875e-7b46930226c&amp;title=&amp;width=294.4" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711816185682-659441bc-e72d-4648-bb1c-4db6d30c1c6b.png#averageHue=%23f0f0ef&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=210&amp;id=ueb89ae7e&amp;originHeight=262&amp;originWidth=441&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=13485&amp;status=done&amp;style=none&amp;taskId=ub514b69c-223c-4e45-b79a-94eb1b0d693&amp;title=&amp;width=352.8" alt="image.png"><br>
+ 得到 flag</p>
+<h3 id="81从娃娃抓起"><a class="markdownIt-Anchor" href="#81从娃娃抓起">#</a> 81. 从娃娃抓起</h3>
+<p>下载下来看到<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711817349241-6a98d7f1-a309-4261-8a73-d5e2d1378441.png#averageHue=%23ece9e7&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=109&amp;id=u63d3d8f2&amp;originHeight=136&amp;originWidth=776&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=17365&amp;status=done&amp;style=none&amp;taskId=ufbc59f96-0ded-41a4-8070-6c1123e2615&amp;title=&amp;width=620.8" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711817316593-b80b97e9-91be-447c-960b-7d160379032f.png#averageHue=%23f3f1f0&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=186&amp;id=u86364e91&amp;originHeight=233&amp;originWidth=520&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=12264&amp;status=done&amp;style=none&amp;taskId=uc5300ce3-1f5e-49dd-80f4-4c08e2e7273&amp;title=&amp;width=416" alt="image.png"><br>
+ 这里是中文电码，下面的是五笔<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711817309835-1b91d67d-aa12-4125-9f7d-6f4ebc3e4f13.png#averageHue=%23f7f7f7&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=280&amp;id=uae168ad6&amp;originHeight=350&amp;originWidth=1425&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=23497&amp;status=done&amp;style=none&amp;taskId=uf144d220-477b-411f-bdbd-af6600e5e35&amp;title=&amp;width=1140" alt="image.png"></p>
+<p 3b4b5dccd2c008fe7e2664bd1bc19292=""><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711817880599-b5707967-65e1-4312-a67b-18b3b787b228.png#averageHue=%23f3e49d&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=89&amp;id=uf5fc70cd&amp;originHeight=111&amp;originWidth=248&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=4117&amp;status=done&amp;style=none&amp;taskId=uf02a7773-1c38-4af2-bfab-89c89a9e733&amp;title=&amp;width=198.4" alt="image.png"><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711817893164-ee3beb93-afc0-4fbc-afa2-8bd38f5439bc.png#averageHue=%23fde25b&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=218&amp;id=uf72b710d&amp;originHeight=272&amp;originWidth=231&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=8406&amp;status=done&amp;style=none&amp;taskId=u9bba972a-d29d-4efe-8e5b-ba1d1941c33&amp;title=&amp;width=184.8" alt="image.png"><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711817908969-24f60874-d38a-455c-bfcb-414a39ed5a33.png#averageHue=%23fce05a&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=211&amp;id=u7c097b5b&amp;originHeight=264&amp;originWidth=233&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=10586&amp;status=done&amp;style=none&amp;taskId=u0d02ae42-9c45-49e9-baa2-051d0edfb00&amp;title=&amp;width=186.4" alt="image.png"><br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711818333000-edc74c66-9d82-44da-a476-b86a24eb8af7.png#averageHue=%23f5e9ae&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=81&amp;id=u42a49a8f&amp;originHeight=101&amp;originWidth=324&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=4831&amp;status=done&amp;style=none&amp;taskId=u6368ed37-e16d-4bb3-8a2e-4ed119ab049&amp;title=&amp;width=259.2" alt="image.png"><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711818337209-1655f467-c41a-42a7-9577-a36e920950cf.png#averageHue=%23f5e8a9&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=91&amp;id=u3cee9b12&amp;originHeight=114&amp;originWidth=274&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=4853&amp;status=done&amp;style=none&amp;taskId=u0d376bb0-88ae-45bf-9f88-f55b4a3d3ad&amp;title=&amp;width=219.2" alt="image.png"><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711818349073-10a5c714-69c4-4326-babe-47ea63823e37.png#averageHue=%23f4e6a0&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=92&amp;id=u066409b2&amp;originHeight=115&amp;originWidth=246&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=4382&amp;status=done&amp;style=none&amp;taskId=u2be102ae-3957-4ef2-92ac-487e66538be&amp;title=&amp;width=196.8" alt="image.png"><img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711818363389-1aa4e970-c306-4076-bd03-17fe9b2b6f24.png#averageHue=%23f5e9ad&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=95&amp;id=u755947f3&amp;originHeight=119&amp;originWidth=272&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=4399&amp;status=done&amp;style=none&amp;taskId=ub9e8fb0c-22e3-42da-8c1d-76eb50b592c&amp;title=&amp;width=217.6" alt="image.png"><br>
+ 最后得到结果：人工智能也要从娃娃抓起<br>
+<img data-src="https://cdn.nlark.com/yuque/0/2024/png/40371717/1711818441919-5bb7d97f-f7ff-4e83-96d6-77a84ab2fe8d.png#averageHue=%23fdfcfb&amp;clientId=u848323b2-a21f-4&amp;from=paste&amp;height=569&amp;id=ud2f55f0a&amp;originHeight=711&amp;originWidth=1204&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=53638&amp;status=done&amp;style=none&amp;taskId=u1daa75a1-681d-44bf-a7a0-a9c0ca5cfa0&amp;title=&amp;width=963.2" alt="image.png"><br>
+flag</p>
+
+      <div class="tags">
+          <a href="/tags/MISC/" rel="tag"><i class="ic i-tag"></i> MISC</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-04-17 20:59:34" itemprop="dateModified" datetime="2024-04-17T20:59:34+08:00">2024-04-17</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>RZero0ne <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://rzero0ne.github.io/2024/04/17/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">https://rzero0ne.github.io/2024/04/17/BUUCTF_MISC(70-81)/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/04/17/BUUCTF_MISC(52-69)/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;nnnpc-1311441040.cos.ap-shanghai.myqcloud.com&#x2F;1.jpg" title="BUUCTF_MISC(52-69)">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> MISC</span>
+  <h3>BUUCTF_MISC(52-69)</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/04/17/BUUCTF_MISC(82-97)/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;nnnpc-1311441040.cos.ap-shanghai.myqcloud.com&#x2F;1.jpg" title="BUUCTF_MISC(82-97)">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> MISC</span>
+  <h3>BUUCTF_MISC(82-97)</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#70actf%E6%96%B0%E7%94%9F%E8%B5%9B2020swp"><span class="toc-number">1.</span> <span class="toc-text"> 70.[ACTF 新生赛 2020] swp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#71utctf2020docx"><span class="toc-number">2.</span> <span class="toc-text"> 71.[UTCTF2020]docx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#72gxyctf2019sxmgdghpcybiyxnlpw"><span class="toc-number">3.</span> <span class="toc-text"> 72.[GXYCTF2019]SXMgdGhpcyBiYXNlPw&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#73%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95"><span class="toc-number">4.</span> <span class="toc-text"> 73. 间谍启示录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#74%E5%96%B5%E5%96%B5%E5%96%B5"><span class="toc-number">5.</span> <span class="toc-text"> 74. 喵喵喵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#imagepng"><span class="toc-number"></span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#imagepng-2"><span class="toc-number"></span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#75%E5%B0%8F%E6%98%93%E7%9A%84u%E7%9B%98"><span class="toc-number">1.</span> <span class="toc-text"> 75. 小易的 U 盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#76roarctf2019%E9%BB%84%E9%87%916%E5%B9%B4"><span class="toc-number">2.</span> <span class="toc-text"> 76.[RoarCTF2019] 黄金 6 年</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#77wustctf2020%E7%88%AC"><span class="toc-number">3.</span> <span class="toc-text"> 77.[WUSTCTF2020] 爬</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#78wustctf2020alison_likes_jojo"><span class="toc-number">4.</span> <span class="toc-text"> 78.[WUSTCTF2020]alison_likes_jojo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#79%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text"> 79. 弱口令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#80%E5%AE%89%E6%B4%B5%E6%9D%AF-2019%E5%90%B9%E7%9D%80%E8%B4%9D%E6%96%AF%E6%89%AB%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text"> 80.[安洵杯 2019] 吹着贝斯扫二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#81%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7"><span class="toc-number">7.</span> <span class="toc-text"> 81. 从娃娃抓起</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2024/04/17/BUUCTF_MISC(1-20)/" rel="bookmark" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></li><li><a href="/2024/04/17/BUUCTF_MISC(21-35)/" rel="bookmark" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></li><li><a href="/2024/04/17/BUUCTF_MISC(36-51)/" rel="bookmark" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></li><li><a href="/2024/04/17/BUUCTF_MISC(52-69)/" rel="bookmark" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></li><li class="active"><a href="/2024/04/17/BUUCTF_MISC(70-81)/" rel="bookmark" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></li><li><a href="/2024/04/17/BUUCTF_MISC(82-97)/" rel="bookmark" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></li><li><a href="/2024/04/17/%E9%9A%90%E5%86%99%E5%B7%A5%E5%85%B7zsteg%E5%AE%89%E8%A3%85+%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" rel="bookmark" title="隐写工具zsteg安装+使用教程">隐写工具zsteg安装+使用教程</a></li><li><a href="/2024/04/17/CTF%E5%BF%85%E5%A4%87%E5%AF%86%E7%A0%81%E7%BC%96%E7%A0%81%E5%A4%A7%E5%85%A8/" rel="bookmark" title="CTF必备密码编码大全">CTF必备密码编码大全</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="RZero0ne"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">RZero0ne</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">10</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">2</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/04/17/BUUCTF_MISC(52-69)/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/04/17/BUUCTF_MISC(82-97)/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
+</div>
+
+    <span><a href="/2024/04/17/buuctf-%5BWUSTCTF2020%5DCr0ssfun1/" title="buuctf-[WUSTCTF2020]Cr0ssfun1">buuctf-[WUSTCTF2020]Cr0ssfun1</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/17/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/17/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/17/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/17/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
+</div>
+
+    <span><a href="/2024/04/17/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/17/CTF%E5%BF%85%E5%A4%87%E5%AF%86%E7%A0%81%E7%BC%96%E7%A0%81%E5%A4%A7%E5%85%A8/" title="CTF必备密码编码大全">CTF必备密码编码大全</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/17/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/17/%E9%9A%90%E5%86%99%E5%B7%A5%E5%85%B7zsteg%E5%AE%89%E8%A3%85+%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="隐写工具zsteg安装+使用教程">隐写工具zsteg安装+使用教程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/17/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">RZero0ne @ RZero0ne</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/04/17/BUUCTF_MISC(70-81)/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
