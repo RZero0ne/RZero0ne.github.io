@@ -89,12 +89,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
         </ul>
       </div>
     </header>
@@ -234,6 +234,20 @@ print(’’.join(flag))
     <h3><a href="/2024/04/18/BUUCTF_MISC(82-97)/" itemprop="url" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></h3>
     <div class="excerpt">
         # BUUCTF_MISC(82-97)
+# 82.zip
+下载下来 zip 里有 68 个 zip，每个都需要密码，试了一个 zip，可以 4 位爆破出密码
+
+使 ** 用 CRC32 爆破得到其内容 zip，先以 out0.zip 做个例子，out0.zip 的 CRC32 校验码为：0x75f90d3a**
+import zipfile
+import string
+import binascii
+def CrackCrc(crc):
+for i in dic:
+for j in dic:
+for k in dic:
+for h in dic:
+s = i + j + k + h
+if...
     </div>
     <div class="meta footer">
       <span>
@@ -263,6 +277,25 @@ print(’’.join(flag))
     <h3><a href="/2024/04/18/BUUCTF_MISC(70-81)/" itemprop="url" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></h3>
     <div class="excerpt">
         # BUUCTF_MISC(70-81)
+# 70.[ACTF 新生赛 2020] swp
+
+导出 http 对象中发现有 zip，提取出来
+
+发现 zip 里有两个加密文件，010 里发现是伪加密
+
+把 01 修改为 00，即可打开两个文件
+flag 里没找到 flag
+
+在.flag.swp 中找到 flag
+
+# 71.[UTCTF2020]docx
+把 docx 文件后缀改为 rar
+
+media 里找到 flag 图片
+
+# 72.[GXYCTF2019]SXMgdGhpcyBiYXNlPw==
+base64 解密题目：Is this base?
+flag.txt...
     </div>
     <div class="meta footer">
       <span>
@@ -292,6 +325,7 @@ print(’’.join(flag))
     <h3><a href="/2024/04/18/BUUCTF_MISC(52-69)/" itemprop="url" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></h3>
     <div class="excerpt">
         # BUUCTF_MISC(52-69)
+# 52. 穿越时空的思念
     </div>
     <div class="meta footer">
       <span>
@@ -321,6 +355,7 @@ print(’’.join(flag))
     <h3><a href="/2024/04/18/BUUCTF_MISC(36-51)/" itemprop="url" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></h3>
     <div class="excerpt">
         # BUUCTF_MISC(36-51)
+# 36.[GXYCTF2019] 佛系青年
     </div>
     <div class="meta footer">
       <span>
@@ -350,6 +385,27 @@ print(’’.join(flag))
     <h3><a href="/2024/04/18/BUUCTF_MISC(21-35)/" itemprop="url" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></h3>
     <div class="excerpt">
         # BUUCTF_MISC(21-35)
+# 21. 隐藏的钥匙
+图片拖进 010，搜 flag，发现了一段 base64 密文
+
+得到 flag
+# 22. 另外一个世界
+拖到 010 最后发现一段 ascii 码
+
+对照码表转换成字符
+
+flag
+# 23. 神秘龙卷风
+发现加密 zip，根据题目提示 4 位数字密码，
+
+解压得到 txt
+
+brainfuck 加密：https://www.splitbrain.org/services/ook
+brainfuck to text 出 flag
+
+# 24.FLAG
+打开得到 png 文件
+用 zsteg 分析发现有个 zip...
     </div>
     <div class="meta footer">
       <span>
@@ -564,35 +620,7 @@ flag
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
-</div>
-
-    <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
-</div>
-
-    <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
   </li>
 
       
@@ -618,7 +646,35 @@ flag
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
   </li>
 
       

@@ -153,6 +153,108 @@ RZero0ne =  = 答案在明天，每个明天</title>
     
 
     <h1 id="buuctf_misc21-35"><a class="markdownIt-Anchor" href="#buuctf_misc21-35">#</a> BUUCTF_MISC(21-35)</h1>
+<h3 id="21隐藏的钥匙"><a class="markdownIt-Anchor" href="#21隐藏的钥匙">#</a> 21. 隐藏的钥匙</h3>
+<p>图片拖进 010，搜 flag，发现了一段 base64 密文</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps31.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps32.jpg" alt title="fig:"></p>
+<p 377cbadda1eca2f2f73d36277781f00a>得到 flag</p>
+<h3 id="22另外一个世界"><a class="markdownIt-Anchor" href="#22另外一个世界">#</a> 22. 另外一个世界</h3>
+<p>拖到 010 最后发现一段 ascii 码</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps33.jpg" alt title="fig:"></p>
+<p>对照码表转换成字符</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps34.jpg" alt title="fig:"></p>
+<p koekj3s>flag</p>
+<h3 id="23神秘龙卷风"><a class="markdownIt-Anchor" href="#23神秘龙卷风">#</a> 23. 神秘龙卷风</h3>
+<p>发现加密 zip，根据题目提示 4 位数字密码，</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps35.jpg" alt title="fig:"></p>
+<p>解压得到 txt</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps36.jpg" alt title="fig:"></p>
+<p>brainfuck 加密：<span class="exturl" data-url="aHR0cHM6Ly93d3cuc3BsaXRicmFpbi5vcmcvc2VydmljZXMvb29r">https://www.splitbrain.org/services/ook</span></p>
+<p>brainfuck to text 出 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps37.jpg" alt title="fig:"></p>
+<h3 id="24flag"><a class="markdownIt-Anchor" href="#24flag">#</a> 24.FLAG</h3>
+<p>打开得到 png 文件</p>
+<p>用 zsteg 分析发现有个 zip 隐藏其中，用命令把 zip 提取出来</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps38.jpg" alt title="fig:"></p>
+<p>zip 拖到 windows 里面解压出来了一个 1 文件</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps39.jpg" alt title="fig:"></p>
+<p>用 PE 查到文件是 64 位，拖进 ida 里面看到 flag<img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps40.jpg" alt title="fig:"></p>
+<p dd0gf4c3tok3yb0ard4g41n~~~>hctf</p>
+<h3 id="25数据包中的线索"><a class="markdownIt-Anchor" href="#25数据包中的线索">#</a> 25. 数据包中的线索</h3>
+<p>一开始分析 tcp 流，发现内容显示不完全，分析 http 流</p>
+<p>在第 7 流中发现一段 base64 密文，复制下来解密，被识别出 jfif 文件自动转换成 jpg 文件</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps41.jpg" alt title="fig:"></p>
+<p>打开发现 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps42.jpg" alt title="fig:"></p>
+<h3 id="26假如给我三天光明"><a class="markdownIt-Anchor" href="#26假如给我三天光明">#</a> 26. 假如给我三天光明</h3>
+<p>打开图片发现盲文</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps43.jpg" alt title="fig:"></p>
+<p>对照转换表</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps44.jpg" alt title="fig:"></p>
+<p>解密 kmdonowg</p>
+<p>拿到 zip 密码，得到一个 music.wav 文件</p>
+<p>-.-. - …-. .-- .–. . … ----- —… --… …-- …—<br>
+…–… …— …-- -… --…</p>
+<p ctfwpei08732?23dz>摩斯电码解密出 flag</p>
+<h3 id="27后门查杀"><a class="markdownIt-Anchor" href="#27后门查杀">#</a> 27. 后门查杀</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps45.jpg" alt title="fig:"></p>
+<p>用 d 盾扫描出来</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps46.jpg" alt title="fig:"></p>
+<p>打开 include.php 找到 md5</p>
+<p>6ac45fb83b3bc355c024f5034b947dd3</p>
+<h3 id="28webshell后门"><a class="markdownIt-Anchor" href="#28webshell后门">#</a> 28.webshell 后门</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps47.jpg" alt title="fig:"></p>
+<p>进入 zp.php 找到 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps48.jpg" alt title="fig:"></p>
+<h3 id="29来首歌吧"><a class="markdownIt-Anchor" href="#29来首歌吧">#</a> 29. 来首歌吧</h3>
+<h3 id><a class="markdownIt-Anchor" href="#">#</a> <img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps49.jpg" alt title="fig:"></h3>
+<p>摩斯电码解密</p>
+<p>… -… -.-. ----. …— … -… …- ----. -.-.<br>
+-… ----- .---- —… —… …-. … …— . -…<br>
+.---- --… -… --… ----- ----. …— ----.<br>
+.---- ----. .---- -.-.</p>
+<p>5BC925649CB0188F52E617D70929191C</p>
+<h3 id="30面具下的flag"><a class="markdownIt-Anchor" href="#30面具下的flag">#</a> 30. 面具下的 flag</h3>
+<p>先用 binwalk 分离出 zip 文件</p>
+<p>发现需要密码，把 zip 拖进 0101 里发现是伪加密，把 09 改成 00，得到 flag.vmdk 文件，</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps50.jpg" alt title="fig:"></p>
+<p>用 linux 里自带的 7z 解压，得到 2 个文件，</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps51.jpg" alt title="fig:"></p>
+<p>第一个文件里有个 NUL，cat 查看，brainfuck 解密得到第一段 flag，</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps52.jpg" alt title="fig:"></p>
+<p>第二个文件里 cat 出 Ook！密文，解密得到第二段 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps53.jpg" alt title="fig:"></p>
+<p n7f5_ad5_i5_funny!>flag</p>
+<h3 id="31荷兰宽带数据泄露"><a class="markdownIt-Anchor" href="#31荷兰宽带数据泄露">#</a> 31. 荷兰宽带数据泄露</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps54.jpg" alt title="fig:"></p>
+<p>用 RouterPassView 查找 username 和 password，flag 是 <code>&lt;Username val=053700357621 /&gt;</code></p>
+<p 053700357621>flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps55.jpg" alt title="fig:"></p>
+<h3 id="32九连环"><a class="markdownIt-Anchor" href="#32九连环">#</a> 32. 九连环</h3>
+<p>binwalk 分离出来了一个 zip，发现是伪加密，改成 14 00 00 08</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps56.jpg" alt title="fig:"></p>
+<p>解压得到一个 jpg 和一个加密 zip，空密码</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps57.jpg" alt title="fig:"></p>
+<p 1rto8w@&amp;4nk@z*xl>txt 里面就是 zip 的密码：flag</p>
+<h3 id="32被劫持的神秘礼物"><a class="markdownIt-Anchor" href="#32被劫持的神秘礼物">#</a> 32. 被劫持的神秘礼物</h3>
+<p>导出 http，有三个文件，login 里面有账号密码，合并起来：adminaadminb</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps58.jpg" alt title="fig:"></p>
+<h3 id="33bjdctf2020认真你就输了"><a class="markdownIt-Anchor" href="#33bjdctf2020认真你就输了">#</a> 33.[BJDCTF2020] 认真你就输了</h3>
+<p>binwalk，foremost 出来了 zip，找到文件里的 flag.txt</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps59.jpg" alt title="fig:"></p>
+<h3 id="34被偷走的文件"><a class="markdownIt-Anchor" href="#34被偷走的文件">#</a> 34. 被偷走的文件</h3>
+<p>在 tcp 追踪流中，在第 3 流中发现 rar 文件</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps60.jpg" alt title="fig:"></p>
+<p>binwalk 出来一个 rar 文件</p>
+<p>爆破出来 4 位密码</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps61.jpg" alt title="fig:"></p>
+<p 6fe99a5d03fb01f833ec3caa80358fa3>flag</p>
+<h3 id="35bjdctf2020藏藏藏"><a class="markdownIt-Anchor" href="#35bjdctf2020藏藏藏">#</a> 35.[BJDCTF2020] 藏藏藏</h3>
+<p>foremost 出来了一个 zip 文件，解压出来一个 jpg</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps62.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps63.jpg" alt title="fig:"></p>
+<p>扫描出来</p>
+<p you are the best!>flag</p>
 
       <div class="tags">
           <a href="/tags/MISC/" rel="tag"><i class="ic i-tag"></i> MISC</a>
@@ -167,7 +269,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2024-04-18 17:08:56" itemprop="dateModified" datetime="2024-04-18T17:08:56+08:00">2024-04-18</time>
+    <time title="修改时间：2024-04-18 17:28:36" itemprop="dateModified" datetime="2024-04-18T17:28:36+08:00">2024-04-18</time>
   </span>
 </div>
 
@@ -231,7 +333,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#buuctf_misc21-35"><span class="toc-number">1.</span> <span class="toc-text"> BUUCTF_MISC(21-35)</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#buuctf_misc21-35"><span class="toc-number">1.</span> <span class="toc-text"> BUUCTF_MISC(21-35)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21%E9%9A%90%E8%97%8F%E7%9A%84%E9%92%A5%E5%8C%99"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 21. 隐藏的钥匙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E4%B8%96%E7%95%8C"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 22. 另外一个世界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23%E7%A5%9E%E7%A7%98%E9%BE%99%E5%8D%B7%E9%A3%8E"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 23. 神秘龙卷风</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24flag"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 24.FLAG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25%E6%95%B0%E6%8D%AE%E5%8C%85%E4%B8%AD%E7%9A%84%E7%BA%BF%E7%B4%A2"><span class="toc-number">1.0.5.</span> <span class="toc-text"> 25. 数据包中的线索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26%E5%81%87%E5%A6%82%E7%BB%99%E6%88%91%E4%B8%89%E5%A4%A9%E5%85%89%E6%98%8E"><span class="toc-number">1.0.6.</span> <span class="toc-text"> 26. 假如给我三天光明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#27%E5%90%8E%E9%97%A8%E6%9F%A5%E6%9D%80"><span class="toc-number">1.0.7.</span> <span class="toc-text"> 27. 后门查杀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#28webshell%E5%90%8E%E9%97%A8"><span class="toc-number">1.0.8.</span> <span class="toc-text"> 28.webshell 后门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#29%E6%9D%A5%E9%A6%96%E6%AD%8C%E5%90%A7"><span class="toc-number">1.0.9.</span> <span class="toc-text"> 29. 来首歌吧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.0.10.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#30%E9%9D%A2%E5%85%B7%E4%B8%8B%E7%9A%84flag"><span class="toc-number">1.0.11.</span> <span class="toc-text"> 30. 面具下的 flag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#31%E8%8D%B7%E5%85%B0%E5%AE%BD%E5%B8%A6%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2"><span class="toc-number">1.0.12.</span> <span class="toc-text"> 31. 荷兰宽带数据泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32%E4%B9%9D%E8%BF%9E%E7%8E%AF"><span class="toc-number">1.0.13.</span> <span class="toc-text"> 32. 九连环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32%E8%A2%AB%E5%8A%AB%E6%8C%81%E7%9A%84%E7%A5%9E%E7%A7%98%E7%A4%BC%E7%89%A9"><span class="toc-number">1.0.14.</span> <span class="toc-text"> 32. 被劫持的神秘礼物</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33bjdctf2020%E8%AE%A4%E7%9C%9F%E4%BD%A0%E5%B0%B1%E8%BE%93%E4%BA%86"><span class="toc-number">1.0.15.</span> <span class="toc-text"> 33.[BJDCTF2020] 认真你就输了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34%E8%A2%AB%E5%81%B7%E8%B5%B0%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.16.</span> <span class="toc-text"> 34. 被偷走的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35bjdctf2020%E8%97%8F%E8%97%8F%E8%97%8F"><span class="toc-number">1.0.17.</span> <span class="toc-text"> 35.[BJDCTF2020] 藏藏藏</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
@@ -349,18 +451,6 @@ RZero0ne =  = 答案在明天，每个明天</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
-</div>
-
-    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/Misc/" title="分类于 Misc">Misc</a>
 <i class="ic i-angle-right"></i>
 <a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
@@ -368,35 +458,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
-</div>
-
-    <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
-</div>
-
-    <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
   </li>
 
       
@@ -438,7 +500,47 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
+</div>
+
+    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
   </li>
 
   </ul>

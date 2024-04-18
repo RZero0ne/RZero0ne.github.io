@@ -153,6 +153,1900 @@ RZero0ne =  = 答案在明天，每个明天</title>
     
 
     <h1 id="buuctf_misc82-97"><a class="markdownIt-Anchor" href="#buuctf_misc82-97">#</a> BUUCTF_MISC(82-97)</h1>
+<h3 id="82zip"><a class="markdownIt-Anchor" href="#82zip">#</a> 82.zip</h3>
+<p><strong>下载下来 zip 里有 68 个 zip，每个都需要密码，试了一个 zip，可以 4 位爆破出密码</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps1.jpg" alt title="fig:"></p>
+<p><strong>使 *</strong>* 用 CRC32 爆破得到其内容 zip，先以 out0.zip 做个例子，out0.zip 的 CRC32 校验码为：0x75f90d3a**</p>
+<p>import zipfile<br>
+import string<br>
+import binascii</p>
+<p>def CrackCrc(crc):<br>
+for i in dic:<br>
+for j in dic:<br>
+for k in dic:<br>
+for h in dic:<br>
+s = i + j + k + h<br>
+if crc == (binascii.crc32(s.encode())):<br>
+f.write(s)<br>
+return</p>
+<p>def CrackZip():<br>
+for i in range(0,68):<br>
+file = ‘out’+str(i)+’.zip’<br>
+crc = zipfile.ZipFile(file,‘r’).getinfo(‘data.txt’).CRC<br>
+CrackCrc(crc)<br>
+print(’\r’+“loading：{:%}”.format(float((i+1)/68)),end=’’)</p>
+<p>dic = string.ascii_letters + string.digits + ‘+/=’<br>
+f = open(‘out.txt’,‘w’)<br>
+print(&quot;\nCRC32begin&quot;)<br>
+CrackZip()<br>
+print(“CRC32finished”)<br>
+f.close()</p>
+<p><strong>得到 *</strong>* 所有压缩包的 data.txt 中的内容，并拼接在一起，发现是一段 base64 密文 **</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps2.jpg" alt title="fig:"></p>
+<p><a target="_blank" rel="noopener" href="https://the-x.cn/encodings/Base64.aspx"><strong>https://the-x.cn/encodings/Base64.aspx</strong></a></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps3.jpg" alt title="fig:"></p>
+<p><strong>发现 rar 文件尾：*</strong>*C4 3D 7B 00 40 07 00**</p>
+<p><strong>网上搜到是 base64 字节流数据，使用脚本将 base64 解码并以字节流的形式写入一个新文件 new.txt</strong></p>
+<p>import base64</p>
+<p>base64_text = open(‘out.txt’,‘r’).read()<br>
+byte_stream = base64.b64decode(base64_text)<br>
+open(‘new.txt’,‘wb’).write(byte_stream)</p>
+<p><strong>用 010 打开，添加一个 rar 的头部：52 61 72 21 1A 07 00</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps4.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps5.jpg" alt title="fig:"></p>
+<p><strong>注释中可以找到 flag {nev3r_enc0de_t00_sm4ll_fil3_w1th_zip}</strong></p>
+<h3 id="83guet-ctf2019zips"><a class="markdownIt-Anchor" href="#83guet-ctf2019zips">#</a> 83.[GUET-CTF2019]zips</h3>
+<p><strong>下载得到 222.zip</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps6.jpg" alt title="fig:"></p>
+<p><strong>暴力破解出密码：723456</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps7.jpg" alt title="fig:"></p>
+<p><strong>111.zip 拖到 010 查看，是伪加密，09 改成 00</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps8.jpg" alt title="fig:"></p>
+<p><strong>setup.sh 里发现一段命令</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps9.jpg" alt title="fig:"></p>
+<p><strong>执行这段 python 代码，自己系统时间生成的时间戳是 17118 开头，把系统时间改为 zip 修改时间：2019/5/17<br>
+8:25 左右，这时可以看到变成了 15580 开头</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps10.jpg" alt title="fig:"></p>
+<p><strong>使用 ARCHPR 掩码爆破，设置掩码 *</strong>*15580???.??**</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps11.jpg" alt title="fig:"></p>
+<p><strong>解压 zip 得到 flag {fkjabPqnLawhvuikfhgzyffj}</strong></p>
+<h3 id="84utctf2020file-header"><a class="markdownIt-Anchor" href="#84utctf2020file-header">#</a> 84.[UTCTF2020]file header</h3>
+<p><strong>下载下来图片发现缺少文件头，补上 89 50 4E 47</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps12.jpg" alt title="fig:"></p>
+<p><strong>直接得到 flag</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps13.jpg" alt title="fig:"></p>
+<h3 id="85xman2018排位赛通行证"><a class="markdownIt-Anchor" href="#85xman2018排位赛通行证">#</a> 85.[XMAN2018 排位赛] 通行证</h3>
+<p><strong>下载得到 txt 文件，发现一段 base64 密文</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps14.jpg" alt title="fig:"></p>
+<p><strong>base64 解密得到：kanbbrgghjl {zb} vtlaln</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps15.jpg" alt title="fig:"></p>
+<p><strong>根据网上 wp 说，利用</strong><a target="_blank" rel="noopener" href="http://ctf.ssleye.com/railfence.html"><strong>栅栏密码网站</strong></a><strong>进行 *</strong>* 加密，Key 等于 7，得到：kzna {blnl_abj_lbh_trg_vg}**</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps16.jpg" alt title="fig:"></p>
+<p><strong>最后一步是 rot13 解密：xman {oyay_now_you_get_it}</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps17.jpg" alt title="fig:"></p>
+<p><strong>flag{oyay_now_you_get_it}</strong></p>
+<h3 id="86wustctf2020girlfriend"><a class="markdownIt-Anchor" href="#86wustctf2020girlfriend">#</a> 86.[WUSTCTF2020]girlfriend</h3>
+<p><strong>解压得到音频文件，听到嘀嘀嘀的声音</strong></p>
+<p><strong>用 Audacity 打开查看波形图，不是摩斯电码，网上搜到是 *</strong>* 在打电话输入号码的声音，DTMF 拨号音识别 **</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps18.jpg" alt title="fig:"></p>
+<p><strong>使用 *</strong>*dtmf2num**</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps19.jpg" alt title="fig:"></p>
+<p><strong>999*666*88*2*777*33*6*999*4*4444*777*555*333*777*444*33*66*3*7777</strong></p>
+<p><strong>这个是手机键盘密码，对应带按键的老式手机</strong></p>
+<p><strong>999*</strong>* 就是指按三下数字 9 得到的字母也就是 y，以此类推，数字对应手机的每个键位，几个数字代表按几下 **</p>
+<p><br>
+999 —&gt; y<br>
+666 —&gt; o<br>
+88 —&gt; u<br>
+2 —&gt; a<br>
+777 —&gt; r<br>
+33 —&gt; e<br>
+6 —&gt; m<br>
+999 —&gt; y<br>
+4 —&gt; g<br>
+4444 —&gt; i<br>
+777 —&gt; r<br>
+555 —&gt; l<br>
+333 —&gt; f<br>
+777 —&gt; r<br>
+444 —&gt; i<br>
+33 —&gt; e<br>
+66 —&gt; n<br>
+3 —&gt; d<br>
+7777 —&gt; s</p>
+<p>youaremygirlfriends</p>
+<p><strong>flag{youaremygirlfriends}</strong></p>
+<h3 id="87ddctf2018"><a class="markdownIt-Anchor" href="#87ddctf2018">#</a> 87.[DDCTF2018](╯°□°）╯︵ ┻━┻</h3>
+<p><strong>拿到 txt 文件：</strong></p>
+<p><strong>(╯°□°）╯︵ ┻━┻</strong></p>
+<p><strong>50pt</strong></p>
+<p><strong>(╯°□°）╯︵ ┻━┻</strong></p>
+<p><strong>d4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9b2b2e1e2b9b9b7b4e1b4b7e3e4b3b2b2e3e6b4b3e2b5b0b6b1b0e6e1e5e1b5fd</strong></p>
+<p><strong>看到这串字符</strong></p>
+<p>d4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9b2b2e1e2b9b9b7b4e1b4b7e3e4b3b2b2e3e6b4b3e2b5b0b6b1b0e6e1e5e1b5fd</p>
+<p><strong>根据网上 wp 说，要先将 *</strong>* 长度为 134 的字符串，按每两位截取的十六进制 **</p>
+<p>[‘d4’, ‘e8’, ‘e1’, ‘f4’, ‘a0’, ‘f7’, ‘e1’, ‘f3’,<br>
+‘a0’, ‘e6’, ‘e1’, ‘f3’, ‘f4’, ‘a1’, ‘a0’, ‘d4’, ‘e8’,<br>
+‘e5’, ‘a0’, ‘e6’, ‘ec’, ‘e1’, ‘e7’, ‘a0’, ‘e9’, ‘f3’,<br>
+‘ba’, ‘a0’, ‘c4’, ‘c4’, ‘c3’, ‘d4’, ‘c6’, ‘fb’, ‘b9’,<br>
+‘b2’, ‘b2’, ‘e1’, ‘e2’, ‘b9’, ‘b9’, ‘b7’, ‘b4’, ‘e1’,<br>
+‘b4’, ‘b7’, ‘e3’, ‘e4’, ‘b3’, ‘b2’, ‘b2’, ‘e3’, ‘e6’,<br>
+‘b4’, ‘b3’, ‘e2’, ‘b5’, ‘b0’, ‘b6’, ‘b1’, ‘b0’, ‘e6’,<br>
+‘e1’, ‘e5’, ‘e1’, ‘b5’, ‘fd’]</p>
+<p><strong>转换为 10</strong><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%BF%9B%E5%88%B6&amp;spm=1001.2101.3001.7020"><strong> 进制</strong></a></p>
+<p>[212, 232, 225, 244, 160, 247, 225, 243, 160, 230, 225, 243, 244, 161,<br>
+160, 212, 232, 229, 160, 230, 236, 225, 231, 160, 233, 243, 186, 160,<br>
+196, 196, 195, 212, 198, 251, 185, 178, 178, 225, 226, 185, 185, 183,<br>
+180, 225, 180, 183, 227, 228, 179, 178, 178, 227, 230, 180, 179, 226,<br>
+181, 176, 182, 177, 176, 230, 225, 229, 225, 181, 253]</p>
+<p><strong>可以发现都是大于 128 的数，把所有数 - 128 得到 ASCII 码</strong></p>
+<p>[84, 104, 97, 116, 32, 119, 97, 115, 32, 102, 97, 115, 116, 33, 32, 84,<br>
+104, 101, 32, 102, 108, 97, 103, 32, 105, 115, 58, 32, 68, 68, 67, 84,<br>
+70, 123, 57, 50, 50, 97, 98, 57, 57, 55, 52, 97, 52, 55, 99, 100, 51,<br>
+50, 50, 99, 102, 52, 51, 98, 53, 48, 54, 49, 48, 102, 97, 101, 97, 53,<br>
+125]</p>
+<p><strong>ASCII 码转换为字符</strong></p>
+<p 922ab9974a47cd322cf43b50610faea5>That was fast! The flag is: DDCTF</p>
+<p><strong>利用网上的脚本直接生成</strong></p>
+<p># -<em>- coding:utf-8 -</em>-<br>
+# author: mochu7<br>
+def hex_str (str):# 对字符串进行切片操作，每两位截取<br>
+ hex_str_list=[]<br>
+for i in range(0,len(str)-1,2):<br>
+hex_str=str[i:i+2]<br>
+hex_str_list.append(hex_str)<br>
+ print (“hex 列表：% s\n”% hex_str_list)<br>
+hex_to_str(hex_str_list)</p>
+<p>def hex_to_str(hex_str_list):<br>
+int_list=[]<br>
+dec_list=[]<br>
+flag=’’<br>
+for i in range (0,len (hex_str_list)):# 把 16 进制转化为 10 进制<br>
+ int_str=int (‘0x% s’% hex_str_list [i],16)<br>
+int_list.append(int_str)<br>
+ dec_list.append (int_str-128)#-128 得到正确的 ascii 码<br>
+ for i in range (0,len (dec_list)):#ascii 码转化为字符串<br>
+ flag += chr (dec_list [i])<br>
+ print (“转化为十进制 int 列表：% s\n”% int_list)<br>
+ print (&quot;-128 得到 ASCII 十进制 dec 列表：% s\n&quot;% dec_list)<br>
+ print (‘最终答案：% s’% flag)</p>
+<p>if <strong>name</strong>==‘<strong>main</strong>’:<br>
+str=‘d4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9b2b2e1e2b9b9b7b4e1b4b7e3e4b3b2b2e3e6b4b3e2b5b0b6b1b0e6e1e5e1b5fd’<br>
+print (“字符串长度：% s”% len (str))<br>
+hex_str(str)</p>
+<p><strong>得到 flag</strong></p>
+<h3 id="88mrctf2020千层套路"><a class="markdownIt-Anchor" href="#88mrctf2020千层套路">#</a> 88.[MRCTF2020] 千层套路</h3>
+<p><strong>解压发现注释提示要使用 python，一直解压发现有很多 zip</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps20.jpg" alt title="fig:"></p>
+<p><strong>利用脚本把 zip 全部解压出来</strong></p>
+<p>import zipfile<br>
+name = ‘0573’<br>
+while True:<br>
+fz = zipfile.ZipFile(name + ‘.zip’, ‘r’)<br>
+fz.extractall(pwd=bytes(name, ‘utf-8’))<br>
+name = fz.filelist[0].filename[0:4]<br>
+fz.close()</p>
+<p><strong>在最后发现</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps21.jpg" alt title="fig:"></p>
+<p><strong>qr.txt 打开发现</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps22.jpg" alt title="fig:"></p>
+<p><strong>利用 rgb 数据转图片脚本，得到一张二维码</strong></p>
+<p>from PIL import Image</p>
+<p>string = ‘’</p>
+<p>file = open(‘qr.txt’)<br>
+MAX = 200</p>
+<p>picture = Image.new(“RGB”, (MAX, MAX))<br>
+for y in range(MAX):<br>
+for x in range(MAX):<br>
+string = file.readline()<br>
+ picture.putpixel ([x, y], eval (string)) # 直接使用 eval () 可以转为元组<br>
+ picture.show ()</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps23.jpg" alt title="fig:"></p>
+<p><strong>得到 flag</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps24.jpg" alt title="fig:"></p>
+<p><strong>flag{ta01uyout1nreet1n0usandtimes}</strong></p>
+<h3 id="89百里挑一"><a class="markdownIt-Anchor" href="#89百里挑一">#</a> 89. 百里挑一</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps25.jpg" alt title="fig:"></p>
+<p><strong>解压得到一个流量包，根据题目提示去找一张壁纸</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps26.jpg" alt title="fig:"></p>
+<p><strong>导出 http 对象</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps27.jpg" alt title="fig:"></p>
+<p><strong>保存下来有好多图片，把文件夹拖到 kali 里找 flag</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps28.jpg" alt title="fig:"></p>
+<p><strong>输入：</strong></p>
+<p>exiftool *|grep flag</p>
+<p><strong>找到第一段 flag</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps29.jpg" alt title="fig:"></p>
+<p><strong>flag{ae58d0408e26e8f</strong></p>
+<p><strong>另外一半在过滤 tcp 流的 114 流中</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps30.jpg" alt title="fig:"></p>
+<p><strong>26a3c0589d23edeec}</strong></p>
+<p><strong>得到</strong></p>
+<p><strong>flag{ae58d0408e26e8f26a3c0589d23edeec}</strong></p>
+<h3 id="90suctf2018followme"><a class="markdownIt-Anchor" href="#90suctf2018followme">#</a> 90.[SUCTF2018]followme</h3>
+<p><strong>下载下来得到一堆文件</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps31.jpg" alt title="fig:"></p>
+<p><strong>在整个文件夹里面寻找一下关键字，比如 CTF，flag 等字样</strong></p>
+<p>grep -r ‘CTF’ ./ 流量 /</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps32.jpg" alt title="fig:"></p>
+<p><strong>找到 flag {password_is_not_weak}</strong></p>
+<h3 id="91mrctf2020cyberpunk"><a class="markdownIt-Anchor" href="#91mrctf2020cyberpunk">#</a> 91.[MRCTF2020]CyberPunk</h3>
+<p><strong>下载得到一个 exe 文件，运行可以看到</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps33.jpg" alt title="fig:"></p>
+<p><strong>根据提示我们需要更改一下系统时间</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps34.jpg" alt title="fig:"></p>
+<p><strong>更改完就可以拿到 flag {We1cOm3_70_cyber_security}</strong></p>
+<h3 id="92安洵杯-2019attack"><a class="markdownIt-Anchor" href="#92安洵杯-2019attack">#</a> 92.[安洵杯 2019] Attack</h3>
+<p><strong>尝试分离流量包观察有什么东西</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps35.jpg" alt title="fig:"></p>
+<p><strong>找到了一个 zip，发现真加密，需要密码</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps36.jpg" alt title="fig:"></p>
+<p><strong>观察下流量包</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps37.jpg" alt title="fig:"></p>
+<p><strong>发现有一个 lsass.dmp 文件，保存下来，用 *</strong>*mimikatz 读取其中内容 **</p>
+<p><strong>一开始爆 ERROR kuhl_m_privilege_simple ; RtlAdjustPrivilege (20)<br>
+c0000061</strong></p>
+<p><strong>右击以管理员身份打开就可以了</strong></p>
+<p><strong>或者在开始菜单的</strong><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=CMD&amp;spm=1001.2101.3001.7020"><strong> CMD</strong></a><strong> 里，cd 到目录打开</strong></p>
+<p>privilege::debug<br>
+sekurlsa::minidump lsass.dmp<br>
+sekurlsa::logonpasswords full</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps38.jpg" alt title="fig:"></p>
+<p><strong>找到密码 *</strong>*W3lc0meToD0g3，把 txt 文件全选发现末尾 **</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps39.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps40.jpg" alt title="fig:"></p>
+<p><strong>flag{3466b11de8894198af3636c5bd1efce2}</strong></p>
+<h3 id="93utctf2020basic-forensics"><a class="markdownIt-Anchor" href="#93utctf2020basic-forensics">#</a> 93.[UTCTF2020]basic-forensics</h3>
+<p><strong>图片发现格式损坏，拖到 010 里面看发现是纯文本</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps41.jpg" alt title="fig:"></p>
+<p><strong>把 jpeg 的后缀改成 txt</strong></p>
+<p><strong>txt 里面搜 flag</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps42.jpg" alt title="fig:"></p>
+<h3 id="94suctf-2019game"><a class="markdownIt-Anchor" href="#94suctf-2019game">#</a> 94.[SUCTF 2019]Game</h3>
+<p><strong>下载下来得到一个 src 文件夹和一张 png</strong></p>
+<p><strong>利用 zsteg 查看图片各通道有没有隐藏什么信息，看到 base64<br>
+encoded，提取出来</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps43.jpg" alt title="fig:"></p>
+<p>zsteg -e b2,r,lsb,xy iZwz9i9xnerwj6o7h40eauZ.png &gt; 3.txt</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps44.jpg" alt title="fig:"></p>
+<p><strong>复制下来这段密文 U2FsdGVkX1+zHjSBeYPtWQVSwXzcVFZLu6Qm0To/KeuHg8vKAxFrVQ==</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps45.jpg" alt title="fig:"></p>
+<p><strong>在 index.html 中搜到 flag，也是一段 base64 密文，然后解密得到 suctf {hAHaha_Fak3_F1ag}</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps46.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps47.jpg" alt title="fig:"></p>
+<p><strong>suctf {hAHaha_Fak3_F1ag} 作为密钥</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps48.jpg" alt title="fig:"></p>
+<p><strong>3des 解密得到 flag</strong></p>
+<h3 id="95bsidessf2019zippy"><a class="markdownIt-Anchor" href="#95bsidessf2019zippy">#</a> 95.[BSidesSF2019]zippy</h3>
+<p><strong>追踪 tcp 流，只有两个流</strong></p>
+<p><strong>0 流：</strong></p>
+<p><strong>有一个 zip 密码：*</strong>*supercomplexpassword**</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps49.jpg" alt title="fig:"></p>
+<p><strong>1 流：</strong></p>
+<p><strong>看到 pk 开头，提取出 zip 的原始数据</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps50.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps51.jpg" alt title="fig:"></p>
+<p><strong>复制到 hxd 中</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps52.jpg" alt title="fig:"></p>
+<p><strong>保存 zip，解压密码是 *</strong>*supercomplexpassword**</p>
+<p><strong>flag{this_flag_is_your_flag}</strong></p>
+<h3 id="96usb"><a class="markdownIt-Anchor" href="#96usb">#</a> 96.USB</h3>
+<p><strong>解压下来一个 rar 和一个 ftm 文件，rar 需要密码</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps53.jpg" alt title="fig:"></p>
+<p><strong>用 binwalk 分离一下 key.ftm，得到一个 key.pcap</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps54.jpg" alt title="fig:"></p>
+<p><strong>发现流量包里都是 USB 流量</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps55.jpg" alt title="fig:"></p>
+<p><strong>这里的 Capture Data 是 16 位，猜测是键盘流量</strong></p>
+<p><strong>Leftover Capture Data：剩余捕获流量</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps56.jpg" alt title="fig:"></p>
+<p><strong>tshark 提取出键盘流量数据</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps57.jpg" alt title="fig:"></p>
+<p><strong>得到这些需要处理的文本</strong></p>
+<p>0002000002000000<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0002000002000000<br>
+0000fe000000feff<br>
+0001000001000000<br>
+0002ff000200ffff<br>
+0002ff000200ffff<br>
+0001000001000000<br>
+0002ff000200ffff<br>
+0001000001000000<br>
+0001fe000100feff<br>
+0001ff000100ffff<br>
+0002000002000000<br>
+0001ff000100ffff<br>
+0002ff000200ffff<br>
+0001fe000100feff<br>
+0002000002000000<br>
+0002fe000200feff<br>
+0002000002000000<br>
+0001ff000100ffff<br>
+0001ff000100ffff<br>
+0002ff000200ffff<br>
+0001000001000000<br>
+0002fe000200feff<br>
+0001000001000000<br>
+0002ff000200ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001ff000100ffff<br>
+0002000002000000<br>
+00ff0000ffff0000<br>
+0000ff000000ffff<br>
+00ffff00ffffffff<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+0000ff000000ffff<br>
+00ff0000ffff0000<br>
+00fe0000feff0000<br>
+00fe0000feff0000<br>
+00ff0000ffff0000<br>
+00fe0000feff0000<br>
+00fe0000feff0000<br>
+00ff0000ffff0000<br>
+00fe0000feff0000<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00fe0000feff0000<br>
+00ff0100ffff0100<br>
+00fe0100feff0100<br>
+00fd0100fdff0100<br>
+00ff0100ffff0100<br>
+00fe0200feff0200<br>
+00fd0100fdff0100<br>
+00ff0100ffff0100<br>
+00fd0200fdff0200<br>
+00ff0200ffff0200<br>
+00fe0200feff0200<br>
+00fe0200feff0200<br>
+00fe0300feff0300<br>
+00ff0300ffff0300<br>
+00fd0300fdff0300<br>
+00fe0300feff0300<br>
+00fe0400feff0400<br>
+00fd0400fdff0400<br>
+00fe0500feff0500<br>
+00ff0400ffff0400<br>
+00fd0500fdff0500<br>
+00fe0400feff0400<br>
+00ff0600ffff0600<br>
+00fe0500feff0500<br>
+00fd0500fdff0500<br>
+00ff0700ffff0700<br>
+00ff0500ffff0500<br>
+00fd0700fdff0700<br>
+00ff0600ffff0600<br>
+00fe0600feff0600<br>
+00fe0600feff0600<br>
+00fe0600feff0600<br>
+00ff0700ffff0700<br>
+00fe0600feff0600<br>
+00ff0700ffff0700<br>
+00fd0600fdff0600<br>
+00ff0700ffff0700<br>
+00ff0500ffff0500<br>
+00fe0500feff0500<br>
+00fe0600feff0600<br>
+00ff0600ffff0600<br>
+0000060000000600<br>
+00ff0500ffff0500<br>
+00fd0600fdff0600<br>
+00ff0500ffff0500<br>
+00ff0500ffff0500<br>
+00ff0600ffff0600<br>
+00fe0500feff0500<br>
+00ff0500ffff0500<br>
+00ff0400ffff0400<br>
+00ff0400ffff0400<br>
+00fe0500feff0500<br>
+00ff0400ffff0400<br>
+00ff0300ffff0300<br>
+00fe0500feff0500<br>
+00ff0400ffff0400<br>
+00ff0400ffff0400<br>
+00fe0400feff0400<br>
+0000040000000400<br>
+00ff0400ffff0400<br>
+00ff0300ffff0300<br>
+00ff0300ffff0300<br>
+00fe0400feff0400<br>
+00ff0300ffff0300<br>
+00ff0400ffff0400<br>
+00ff0300ffff0300<br>
+0000030000000300<br>
+00fe0400feff0400<br>
+00ff0300ffff0300<br>
+00ff0300ffff0300<br>
+00ff0300ffff0300<br>
+00ff0300ffff0300<br>
+00ff0300ffff0300<br>
+00fd0400fdff0400<br>
+00ff0300ffff0300<br>
+00ff0300ffff0300<br>
+00fe0400feff0400<br>
+00ff0300ffff0300<br>
+00ff0400ffff0400<br>
+00ff0300ffff0300<br>
+00ff0400ffff0400<br>
+00fe0400feff0400<br>
+0000030000000300<br>
+00ff0400ffff0400<br>
+00ff0300ffff0300<br>
+00fe0400feff0400<br>
+00ff0300ffff0300<br>
+00ff0400ffff0400<br>
+00ff0300ffff0300<br>
+00ff0300ffff0300<br>
+00ff0400ffff0400<br>
+00ff0300ffff0300<br>
+00ff0300ffff0300<br>
+00ff0400ffff0400<br>
+00ff0300ffff0300<br>
+00ff0300ffff0300<br>
+00ff0200ffff0200<br>
+0000030000000300<br>
+00ff0200ffff0200<br>
+00ff0200ffff0200<br>
+00ff0200ffff0200<br>
+00ff0300ffff0300<br>
+00ff0100ffff0100<br>
+00ff0200ffff0200<br>
+00ff0200ffff0200<br>
+00fe0100feff0100<br>
+0000020000000200<br>
+00fd0100fdff0100<br>
+00ff0100ffff0100<br>
+00ff0100ffff0100<br>
+00fd0200fdff0200<br>
+00ff0100ffff0100<br>
+00ff0100ffff0100<br>
+00fd0100fdff0100<br>
+00ff0100ffff0100<br>
+00ff0100ffff0100<br>
+00fd0100fdff0100<br>
+00fe0000feff0000<br>
+00ff0100ffff0100<br>
+00ff0100ffff0100<br>
+00ff0100ffff0100<br>
+00fe0100feff0100<br>
+00ff0100ffff0100<br>
+00fe0000feff0000<br>
+00ff0100ffff0100<br>
+00ff0000ffff0000<br>
+00ff0100ffff0100<br>
+00fe0000feff0000<br>
+00ff0000ffff0000<br>
+00ff0100ffff0100<br>
+00ff0100ffff0100<br>
+00fe0000feff0000<br>
+0000010000000100<br>
+00fe0000feff0000<br>
+00ff0100ffff0100<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00fe0100feff0100<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00fe0100feff0100<br>
+00ff0000ffff0000<br>
+00fe0000feff0000<br>
+00fe0000feff0000<br>
+00ff0100ffff0100<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00fe0000feff0000<br>
+00fd0000fdff0000<br>
+00fe0100feff0100<br>
+0000010000000100<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00ff0100ffff0100<br>
+00fe0000feff0000<br>
+00ff0000ffff0000<br>
+0000010000000100<br>
+00ff0100ffff0100<br>
+00ff0000ffff0000<br>
+0000020000000200<br>
+00fe0000feff0000<br>
+0000010000000100<br>
+00ff0000ffff0000<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0001000001000000<br>
+0000010000000100<br>
+0000020000000200<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0001010001000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0001010001000100<br>
+0000020000000200<br>
+0000010000000100<br>
+0001010001000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+0000010000000100<br>
+00ff0000ffff0000<br>
+0100000000000000<br>
+0000000000000000<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0000fe000000feff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000fe000000feff<br>
+0001fe000100feff<br>
+0001ff000100ffff<br>
+0001fe000100feff<br>
+0000ff000000ffff<br>
+0001fd000100fdff<br>
+0001fe000100feff<br>
+0002fe000200feff<br>
+0001ff000100ffff<br>
+0000fd000000fdff<br>
+0002fc000200fcff<br>
+0002fe000200feff<br>
+0001fd000100fdff<br>
+0001fd000100fdff<br>
+0001fd000100fdff<br>
+0002fc000200fcff<br>
+0002fc000200fcff<br>
+0001fc000100fcff<br>
+0002fd000200fdff<br>
+0002fc000200fcff<br>
+0001fb000100fbff<br>
+0003fc000300fcff<br>
+0002fc000200fcff<br>
+0003fd000300fdff<br>
+0002fa000200faff<br>
+0002fc000200fcff<br>
+0002fb000200fbff<br>
+0003fb000300fbff<br>
+0002fb000200fbff<br>
+0002fa000200faff<br>
+0003fb000300fbff<br>
+0001fa000100faff<br>
+0003fa000300faff<br>
+0002fa000200faff<br>
+0003fb000300fbff<br>
+0003fa000300faff<br>
+0002fa000200faff<br>
+0002fa000200faff<br>
+0003fa000300faff<br>
+0001fa000100faff<br>
+0002fb000200fbff<br>
+0002fa000200faff<br>
+0001fa000100faff<br>
+0003fa000300faff<br>
+0002fb000200fbff<br>
+0002fb000200fbff<br>
+0002fa000200faff<br>
+0002fb000200fbff<br>
+0002fb000200fbff<br>
+0001fb000100fbff<br>
+0002fb000200fbff<br>
+0002fb000200fbff<br>
+0002fc000200fcff<br>
+0001fb000100fbff<br>
+0003fd000300fdff<br>
+0001fb000100fbff<br>
+0003fc000300fcff<br>
+0001fd000100fdff<br>
+0001fc000100fcff<br>
+0003fd000300fdff<br>
+0001fd000100fdff<br>
+0001fd000100fdff<br>
+0001fc000100fcff<br>
+0003ff000300ffff<br>
+0001fc000100fcff<br>
+0001fe000100feff<br>
+0002fd000200fdff<br>
+0003ff000300ffff<br>
+0001fe000100feff<br>
+0001fd000100fdff<br>
+0002fe000200feff<br>
+0002ff000200ffff<br>
+0001fe000100feff<br>
+0001fe000100feff<br>
+0002fe000200feff<br>
+0001ff000100ffff<br>
+0001fe000100feff<br>
+0001fe000100feff<br>
+0002ff000200ffff<br>
+0001fe000100feff<br>
+0001ff000100ffff<br>
+0001ff000100ffff<br>
+0002ff000200ffff<br>
+0001fe000100feff<br>
+0001000001000000<br>
+0001fe000100feff<br>
+0002ff000200ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0000ff000000ffff<br>
+0002000002000000<br>
+0000ff000000ffff<br>
+0001000001000000<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0002000002000000<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0002ff000200ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0001000001000000<br>
+0000fe000000feff<br>
+0000ff000000ffff<br>
+0001000001000000<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000fe000000feff<br>
+0000fe000000feff<br>
+0001fe000100feff<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0002fe000200feff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000fe000000feff<br>
+0000fe000000feff<br>
+0001000001000000<br>
+0001fe000100feff<br>
+0000ff000000ffff<br>
+0000fe000000feff<br>
+0001fe000100feff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0001fe000100feff<br>
+0000ff000000ffff<br>
+0001fe000100feff<br>
+0000ff000000ffff<br>
+0001000001000000<br>
+0000fe000000feff<br>
+0001ff000100ffff<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0000ff000000ffff<br>
+0000fe000000feff<br>
+0001000001000000<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0002ff000200ffff<br>
+0001000001000000<br>
+0000fe000000feff<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0000ff000000ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0002000002000000<br>
+0000ff000000ffff<br>
+0002ff000200ffff<br>
+0001000001000000<br>
+0001000001000000<br>
+0000fe000000feff<br>
+0001000001000000<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0002000002000000<br>
+0000fe000000feff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0002ff000200ffff<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0003000003000000<br>
+0000fe000000feff<br>
+0002000002000000<br>
+0000ff000000ffff<br>
+0003000003000000<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0002ff000200ffff<br>
+0001000001000000<br>
+0001fe000100feff<br>
+0002000002000000<br>
+0001000001000000<br>
+0003ff000300ffff<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0002000002000000<br>
+0001fe000100feff<br>
+0002000002000000<br>
+0001ff000100ffff<br>
+0002ff000200ffff<br>
+0002000002000000<br>
+0001ff000100ffff<br>
+0002000002000000<br>
+0002fe000200feff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001ff000100ffff<br>
+0002ff000200ffff<br>
+0000ff000000ffff<br>
+0002ff000200ffff<br>
+0001fe000100feff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0002ff000200ffff<br>
+0000ff000000ffff<br>
+0001fe000100feff<br>
+0002ff000200ffff<br>
+0001fe000100feff<br>
+0001000001000000<br>
+0001fe000100feff<br>
+0000ff000000ffff<br>
+0002ff000200ffff<br>
+0001ff000100ffff<br>
+0000fe000000feff<br>
+0001000001000000<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+00000e0000000000<br>
+0000000000000000<br>
+0000080000000000<br>
+0000000000000000<br>
+00001c0000000000<br>
+0000000000000000<br>
+0200000000000000<br>
+02002f0000000000<br>
+0200000000000000<br>
+0000000000000000<br>
+00001b0000000000<br>
+0000000000000000<br>
+00000c0000000000<br>
+0000000000000000<br>
+0000110000000000<br>
+0000000000000000<br>
+0000040000000000<br>
+0000000000000000<br>
+0000110000000000<br>
+0000000000000000<br>
+0200000000000000<br>
+0200300000000000<br>
+0200000000000000<br>
+0000000000000000<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+00ff0000ffff0000<br>
+00ffff00ffffffff<br>
+00feff00feffffff<br>
+00fe0000feff0000<br>
+00fdff00fdffffff<br>
+00feff00feffffff<br>
+00fdff00fdffffff<br>
+00fdfe00fdfffeff<br>
+00fcff00fcffffff<br>
+00fdfd00fdfffdff<br>
+00fbfe00fbfffeff<br>
+00fbfe00fbfffeff<br>
+00fbfe00fbfffeff<br>
+00fbfe00fbfffeff<br>
+00fafd00fafffdff<br>
+00fbfd00fbfffdff<br>
+00f9fd00f9fffdff<br>
+00f9fd00f9fffdff<br>
+00f9fd00f9fffdff<br>
+00fafd00fafffdff<br>
+00f7fe00f7fffeff<br>
+00f8fd00f8fffdff<br>
+00f9fe00f9fffeff<br>
+00f8fd00f8fffdff<br>
+00f8fe00f8fffeff<br>
+00f7fd00f7fffdff<br>
+00f7ff00f7ffffff<br>
+00f8fd00f8fffdff<br>
+00f8ff00f8ffffff<br>
+00f8ff00f8ffffff<br>
+00f8fe00f8fffeff<br>
+00f6ff00f6ffffff<br>
+00f8ff00f8ffffff<br>
+00f9ff00f9ffffff<br>
+00f9ff00f9ffffff<br>
+00faff00faffffff<br>
+00fa0000faff0000<br>
+00fbff00fbffffff<br>
+00fb0000fbff0000<br>
+00fb0000fbff0000<br>
+00fb0000fbff0000<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fd0000fdff0000<br>
+00fb0100fbff0100<br>
+00fe0100feff0100<br>
+00fc0000fcff0000<br>
+00fd0100fdff0100<br>
+00fd0100fdff0100<br>
+00fd0000fdff0000<br>
+00fd0100fdff0100<br>
+00fc0000fcff0000<br>
+00fd0000fdff0000<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fd0000fdff0000<br>
+00fd0000fdff0000<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fd0000fdff0000<br>
+00fd0000fdff0000<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fe0000feff0000<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fc0000fcff0000<br>
+00fe0000feff0000<br>
+00fc0000fcff0000<br>
+00fc0000fcff0000<br>
+00fc0000fcff0000<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fd0000fdff0000<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fc0000fcff0000<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fd0000fdff0000<br>
+00fb0100fbff0100<br>
+00fd0100fdff0100<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fc0100fcff0100<br>
+00fd0100fdff0100<br>
+00fd0000fdff0000<br>
+00fc0000fcff0000<br>
+00fd0100fdff0100<br>
+00fd0000fdff0000<br>
+00fd0100fdff0100<br>
+00fc0100fcff0100<br>
+00fd0000fdff0000<br>
+00fd0100fdff0100<br>
+00fc0000fcff0000<br>
+00fd0100fdff0100<br>
+00fd0000fdff0000<br>
+00fc0100fcff0100<br>
+00fe0000feff0000<br>
+00fc0100fcff0100<br>
+00fc0100fcff0100<br>
+00fd0000fdff0000<br>
+00fd0200fdff0200<br>
+00fd0000fdff0000<br>
+00fc0100fcff0100<br>
+00fe0000feff0000<br>
+00fc0100fcff0100<br>
+00fd0100fdff0100<br>
+00fd0000fdff0000<br>
+00fc0200fcff0200<br>
+00fc0000fcff0000<br>
+00fc0000fcff0000<br>
+00fe0100feff0100<br>
+00fc0000fcff0000<br>
+00fc0100fcff0100<br>
+00fd0100fdff0100<br>
+00fd0100fdff0100<br>
+00fc0000fcff0000<br>
+00fe0100feff0100<br>
+00fc0000fcff0000<br>
+00fe0100feff0100<br>
+00fd0100fdff0100<br>
+00fc0000fcff0000<br>
+00fe0100feff0100<br>
+00fd0000fdff0000<br>
+00fd0000fdff0000<br>
+00fd0100fdff0100<br>
+00fe0100feff0100<br>
+00fd0000fdff0000<br>
+00fd0000fdff0000<br>
+00ff0100ffff0100<br>
+00fc0000fcff0000<br>
+00fe0000feff0000<br>
+00fe0000feff0000<br>
+00fe0100feff0100<br>
+00fd0000fdff0000<br>
+00ff0000ffff0000<br>
+00fe0100feff0100<br>
+00fe0000feff0000<br>
+00fe0000feff0000<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00fe0000feff0000<br>
+00ff0100ffff0100<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00ff0000ffff0000<br>
+00ff0100ffff0100<br>
+0000ff000000ffff<br>
+0000fe000000feff<br>
+00ff0000ffff0000<br>
+00fe0000feff0000<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+00ff0000ffff0000<br>
+0000ff000000ffff<br>
+0000fe000000feff<br>
+0000ff000000ffff<br>
+0002000002000000<br>
+0001ff000100ffff<br>
+0001000001000000<br>
+0000ff000000ffff<br>
+0001000001000000<br>
+0002ff000200ffff<br>
+0000ff000000ffff<br>
+0001000001000000<br>
+0001ff000100ffff<br>
+0001ff000100ffff<br>
+0002000002000000<br>
+0000ff000000ffff<br>
+0001000001000000<br>
+0001fe000100feff<br>
+0001fe000100feff<br>
+0000ff000000ffff<br>
+0002ff000200ffff<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0000fe000000feff<br>
+0001000001000000<br>
+0000fe000000feff<br>
+0001ff000100ffff<br>
+0000fe000000feff<br>
+0002ff000200ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0002ff000200ffff<br>
+0000fe000000feff<br>
+0001ff000100ffff<br>
+0000fe000000feff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0001fe000100feff<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0001ff000100ffff<br>
+0000ff000000ffff<br>
+0000fe000000feff<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0000ff000000ffff<br>
+0100000000000000<br>
+0000000000000000</p>
+<p><strong>利用脚本加冒号</strong></p>
+<p>#!/usr/bin/env python<br>
+# -<em>- coding: utf-8 -</em>-<br>
+info = ‘’’<br>
+kali 下运行：<br>
+tshark -r usb.pcap -T fields -e usb.capdata &gt; usbdata.txt<br>
+ 提取流量包信息<br>
+然后通过该脚本可以过滤掉空格和其他内容，并且添加冒号<br>
+‘’’<br>
+print(info)</p>
+<p>f_data = input (“请输入带处理 txt 文件的路径：”)<br>
+ shujian = int (input (“鼠标流量信息请输入 8，键盘流量请输入 16：”))<br>
+f = open(f_data, ‘r’)</p>
+<p># 整理到 out.txt<br>
+with open(‘out.txt’, ‘w’) as f_out:<br>
+for i in f.readlines():<br>
+s = i.strip()<br>
+# 鼠标流量长度为 8 ，键盘流量长度为 16<br>
+if len(s) == shujian:<br>
+# 鼠标流量长度为 8 ，键盘流量长度为 16<br>
+nsl = [s[j:j + 2] for j in range(0, shujian, 2)]<br>
+ns = “:”.join(nsl)<br>
+f_out.write(ns)<br>
+f_out.write(’\n’)</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps58.jpg" alt title="fig:"></p>
+<p><strong>处理完得到</strong></p>
+<p>00:02:00:00:02:00:00:00<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:02:fe:00:02:00:fe:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:02:fe:00:02:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:ff:ff:00:ff:ff:ff:ff<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fe:02:00:fe:ff:02:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fd:02:00:fd:ff:02:00<br>
+00:ff:02:00:ff:ff:02:00<br>
+00:fe:02:00:fe:ff:02:00<br>
+00:fe:02:00:fe:ff:02:00<br>
+00:fe:03:00:fe:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:fd:03:00:fd:ff:03:00<br>
+00:fe:03:00:fe:ff:03:00<br>
+00:fe:04:00:fe:ff:04:00<br>
+00:fd:04:00:fd:ff:04:00<br>
+00:fe:05:00:fe:ff:05:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:fd:05:00:fd:ff:05:00<br>
+00:fe:04:00:fe:ff:04:00<br>
+00:ff:06:00:ff:ff:06:00<br>
+00:fe:05:00:fe:ff:05:00<br>
+00:fd:05:00:fd:ff:05:00<br>
+00:ff:07:00:ff:ff:07:00<br>
+00:ff:05:00:ff:ff:05:00<br>
+00:fd:07:00:fd:ff:07:00<br>
+00:ff:06:00:ff:ff:06:00<br>
+00:fe:06:00:fe:ff:06:00<br>
+00:fe:06:00:fe:ff:06:00<br>
+00:fe:06:00:fe:ff:06:00<br>
+00:ff:07:00:ff:ff:07:00<br>
+00:fe:06:00:fe:ff:06:00<br>
+00:ff:07:00:ff:ff:07:00<br>
+00:fd:06:00:fd:ff:06:00<br>
+00:ff:07:00:ff:ff:07:00<br>
+00:ff:05:00:ff:ff:05:00<br>
+00:fe:05:00:fe:ff:05:00<br>
+00:fe:06:00:fe:ff:06:00<br>
+00:ff:06:00:ff:ff:06:00<br>
+00:00:06:00:00:00:06:00<br>
+00:ff:05:00:ff:ff:05:00<br>
+00:fd:06:00:fd:ff:06:00<br>
+00:ff:05:00:ff:ff:05:00<br>
+00:ff:05:00:ff:ff:05:00<br>
+00:ff:06:00:ff:ff:06:00<br>
+00:fe:05:00:fe:ff:05:00<br>
+00:ff:05:00:ff:ff:05:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:fe:05:00:fe:ff:05:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:fe:05:00:fe:ff:05:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:fe:04:00:fe:ff:04:00<br>
+00:00:04:00:00:00:04:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:fe:04:00:fe:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:00:03:00:00:00:03:00<br>
+00:fe:04:00:fe:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:fd:04:00:fd:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:fe:04:00:fe:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:fe:04:00:fe:ff:04:00<br>
+00:00:03:00:00:00:03:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:fe:04:00:fe:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:04:00:ff:ff:04:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:02:00:ff:ff:02:00<br>
+00:00:03:00:00:00:03:00<br>
+00:ff:02:00:ff:ff:02:00<br>
+00:ff:02:00:ff:ff:02:00<br>
+00:ff:02:00:ff:ff:02:00<br>
+00:ff:03:00:ff:ff:03:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:02:00:ff:ff:02:00<br>
+00:ff:02:00:ff:ff:02:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:00:02:00:00:00:02:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fd:02:00:fd:ff:02:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:00:01:00:00:00:01:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:00:01:00:00:00:01:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:00:02:00:00:00:02:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:00:01:00:00:00:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:01:00:00:01:00:00:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:02:00:00:00:02:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:01:01:00:01:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:01:01:00:01:00:01:00<br>
+00:00:02:00:00:00:02:00<br>
+00:00:01:00:00:00:01:00<br>
+00:01:01:00:01:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:00:01:00:00:00:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+01:00:00:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:fd:00:01:00:fd:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:02:fe:00:02:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:fd:00:00:00:fd:ff<br>
+00:02:fc:00:02:00:fc:ff<br>
+00:02:fe:00:02:00:fe:ff<br>
+00:01:fd:00:01:00:fd:ff<br>
+00:01:fd:00:01:00:fd:ff<br>
+00:01:fd:00:01:00:fd:ff<br>
+00:02:fc:00:02:00:fc:ff<br>
+00:02:fc:00:02:00:fc:ff<br>
+00:01:fc:00:01:00:fc:ff<br>
+00:02:fd:00:02:00:fd:ff<br>
+00:02:fc:00:02:00:fc:ff<br>
+00:01:fb:00:01:00:fb:ff<br>
+00:03:fc:00:03:00:fc:ff<br>
+00:02:fc:00:02:00:fc:ff<br>
+00:03:fd:00:03:00:fd:ff<br>
+00:02:fa:00:02:00:fa:ff<br>
+00:02:fc:00:02:00:fc:ff<br>
+00:02:fb:00:02:00:fb:ff<br>
+00:03:fb:00:03:00:fb:ff<br>
+00:02:fb:00:02:00:fb:ff<br>
+00:02:fa:00:02:00:fa:ff<br>
+00:03:fb:00:03:00:fb:ff<br>
+00:01:fa:00:01:00:fa:ff<br>
+00:03:fa:00:03:00:fa:ff<br>
+00:02:fa:00:02:00:fa:ff<br>
+00:03:fb:00:03:00:fb:ff<br>
+00:03:fa:00:03:00:fa:ff<br>
+00:02:fa:00:02:00:fa:ff<br>
+00:02:fa:00:02:00:fa:ff<br>
+00:03:fa:00:03:00:fa:ff<br>
+00:01:fa:00:01:00:fa:ff<br>
+00:02:fb:00:02:00:fb:ff<br>
+00:02:fa:00:02:00:fa:ff<br>
+00:01:fa:00:01:00:fa:ff<br>
+00:03:fa:00:03:00:fa:ff<br>
+00:02:fb:00:02:00:fb:ff<br>
+00:02:fb:00:02:00:fb:ff<br>
+00:02:fa:00:02:00:fa:ff<br>
+00:02:fb:00:02:00:fb:ff<br>
+00:02:fb:00:02:00:fb:ff<br>
+00:01:fb:00:01:00:fb:ff<br>
+00:02:fb:00:02:00:fb:ff<br>
+00:02:fb:00:02:00:fb:ff<br>
+00:02:fc:00:02:00:fc:ff<br>
+00:01:fb:00:01:00:fb:ff<br>
+00:03:fd:00:03:00:fd:ff<br>
+00:01:fb:00:01:00:fb:ff<br>
+00:03:fc:00:03:00:fc:ff<br>
+00:01:fd:00:01:00:fd:ff<br>
+00:01:fc:00:01:00:fc:ff<br>
+00:03:fd:00:03:00:fd:ff<br>
+00:01:fd:00:01:00:fd:ff<br>
+00:01:fd:00:01:00:fd:ff<br>
+00:01:fc:00:01:00:fc:ff<br>
+00:03:ff:00:03:00:ff:ff<br>
+00:01:fc:00:01:00:fc:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:02:fd:00:02:00:fd:ff<br>
+00:03:ff:00:03:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:fd:00:01:00:fd:ff<br>
+00:02:fe:00:02:00:fe:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:02:fe:00:02:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:fe:00:02:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:00:00:01:00:00:00<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:02:00:00:02:00:00:00<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:03:00:00:03:00:00:00<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:03:00:00:03:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:01:00:00:01:00:00:00<br>
+00:03:ff:00:03:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:02:fe:00:02:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:0e:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+00:00:08:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+00:00:1c:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+02:00:00:00:00:00:00:00<br>
+02:00:2f:00:00:00:00:00<br>
+02:00:00:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+00:00:1b:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+00:00:0c:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+00:00:11:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+00:00:04:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+00:00:11:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+02:00:00:00:00:00:00:00<br>
+02:00:30:00:00:00:00:00<br>
+02:00:00:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:ff:00:ff:ff:ff:ff<br>
+00:fe:ff:00:fe:ff:ff:ff<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fd:ff:00:fd:ff:ff:ff<br>
+00:fe:ff:00:fe:ff:ff:ff<br>
+00:fd:ff:00:fd:ff:ff:ff<br>
+00:fd:fe:00:fd:ff:fe:ff<br>
+00:fc:ff:00:fc:ff:ff:ff<br>
+00:fd:fd:00:fd:ff:fd:ff<br>
+00:fb:fe:00:fb:ff:fe:ff<br>
+00:fb:fe:00:fb:ff:fe:ff<br>
+00:fb:fe:00:fb:ff:fe:ff<br>
+00:fb:fe:00:fb:ff:fe:ff<br>
+00:fa:fd:00:fa:ff:fd:ff<br>
+00:fb:fd:00:fb:ff:fd:ff<br>
+00:f9:fd:00:f9:ff:fd:ff<br>
+00:f9:fd:00:f9:ff:fd:ff<br>
+00:f9:fd:00:f9:ff:fd:ff<br>
+00:fa:fd:00:fa:ff:fd:ff<br>
+00:f7:fe:00:f7:ff:fe:ff<br>
+00:f8:fd:00:f8:ff:fd:ff<br>
+00:f9:fe:00:f9:ff:fe:ff<br>
+00:f8:fd:00:f8:ff:fd:ff<br>
+00:f8:fe:00:f8:ff:fe:ff<br>
+00:f7:fd:00:f7:ff:fd:ff<br>
+00:f7:ff:00:f7:ff:ff:ff<br>
+00:f8:fd:00:f8:ff:fd:ff<br>
+00:f8:ff:00:f8:ff:ff:ff<br>
+00:f8:ff:00:f8:ff:ff:ff<br>
+00:f8:fe:00:f8:ff:fe:ff<br>
+00:f6:ff:00:f6:ff:ff:ff<br>
+00:f8:ff:00:f8:ff:ff:ff<br>
+00:f9:ff:00:f9:ff:ff:ff<br>
+00:f9:ff:00:f9:ff:ff:ff<br>
+00:fa:ff:00:fa:ff:ff:ff<br>
+00:fa:00:00:fa:ff:00:00<br>
+00:fb:ff:00:fb:ff:ff:ff<br>
+00:fb:00:00:fb:ff:00:00<br>
+00:fb:00:00:fb:ff:00:00<br>
+00:fb:00:00:fb:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fb:01:00:fb:ff:01:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fb:01:00:fb:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fc:01:00:fc:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fc:01:00:fc:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:01:00:fc:ff:01:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fc:01:00:fc:ff:01:00<br>
+00:fc:01:00:fc:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:02:00:fd:ff:02:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:01:00:fc:ff:01:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fc:01:00:fc:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fc:02:00:fc:ff:02:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fc:01:00:fc:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:01:00:fd:ff:01:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:fc:00:00:fc:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:fd:00:00:fd:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:01:00:fe:ff:01:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:ff:01:00:ff:ff:01:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:fe:00:00:fe:ff:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:ff:00:00:ff:ff:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:02:00:00:02:00:00:00<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:00:00:01:00:00:00<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:02:ff:00:02:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:fe:00:01:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:01:ff:00:01:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:fe:00:00:00:fe:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+00:00:ff:00:00:00:ff:ff<br>
+01:00:00:00:00:00:00:00<br>
+00:00:00:00:00:00:00:00</p>
+<p>#!/usr/bin/env python<br>
+# -<em>- coding:utf-8 -</em>-<br>
+# 脚本处理完的文件（为冒号分隔的文件）<br>
+normalKeys = {“04”:“a”, “05”:“b”, “06”:“c”, “07”:“d”,<br>
+“08”:“e”, “09”:“f”, “0a”:“g”, “0b”:“h”, “0c”:“i”,<br>
+“0d”:“j”, “0e”:“k”, “0f”:“l”, “10”:“m”, “11”:“n”,<br>
+“12”:“o”, “13”:“p”, “14”:“q”, “15”:“r”, “16”:“s”,<br>
+“17”:“t”, “18”:“u”, “19”:“v”, “1a”:“w”, “1b”:“x”,<br>
+“1c”:“y”, “1d”:“z”,“1e”:“1”, “1f”:“2”, “20”:“3”,<br>
+“21”:“4”, “22”:“5”,<br>
+“23”:“6”,“24”:“7”,“25”:“8”,“26”:“9”,“27”:“0”,“28”:&quot; <code>&lt;RET&gt;</code> &quot;,“29”:&quot; <code>&lt;ESC&gt;</code> &quot;,“2a”:&quot; <code>&lt;DEL&gt;</code> &quot;,<br>
+“2b”:&quot;\t&quot;,“2c”:&quot; <code>&lt;SPACE&gt;</code> &quot;,“2d”:&quot;-&quot;,“2e”:&quot;=&quot;,“2f”:&quot;[&quot;,“30”:&quot;]&quot;,“31”:&quot;\&quot;,“32”:&quot; <code>&lt;NON&gt;</code> &quot;,“33”:&quot;;&quot;,“34”:&quot;’&quot;,“35”:&quot; <code>&lt;GA&gt;</code> &quot;,“36”:&quot;,&quot;,“37”:&quot;.&quot;,“38”:&quot;/&quot;,“39”:&quot; <code>&lt;CAP&gt;</code> &quot;,“3a”:&quot; <code>&lt;F1&gt;</code> &quot;,“3b”:&quot; <code>&lt;F2&gt;</code> &quot;,<br>
+“3c”:&quot; <code>&lt;F3&gt;</code> &quot;,“3d”:&quot; <code>&lt;F4&gt;</code> &quot;,“3e”:&quot; <code>&lt;F5&gt;</code> &quot;,“3f”:&quot; <code>&lt;F6&gt;</code> &quot;,“40”:&quot; <code>&lt;F7&gt;</code> &quot;,“41”:&quot; <code>&lt;F8&gt;</code> &quot;,“42”:&quot; <code>&lt;F9&gt;</code> &quot;,“43”:&quot; <code>&lt;F10&gt;</code> &quot;,“44”:&quot; <code>&lt;F11&gt;</code> &quot;,“45”:&quot; <code>&lt;F12&gt;</code> &quot;}<br>
+shiftKeys = {“04”:“A”, “05”:“B”, “06”:“C”, “07”:“D”,<br>
+“08”:“E”, “09”:“F”, “0a”:“G”, “0b”:“H”, “0c”:“I”,<br>
+“0d”:“J”, “0e”:“K”, “0f”:“L”, “10”:“M”, “11”:“N”,<br>
+“12”:“O”, “13”:“P”, “14”:“Q”, “15”:“R”, “16”:“S”,<br>
+“17”:“T”, “18”:“U”, “19”:“V”, “1a”:“W”, “1b”:“X”,<br>
+“1c”:“Y”, “1d”:“Z”,“1e”:&quot;!&quot;, “1f”:&quot;@&quot;, “20”:&quot;#&quot;,<br>
+“21”:&quot;$&quot;, “22”:&quot;%&quot;,<br>
+“23”:&quot;^&quot;,“24”:&quot;&amp;&quot;,“25”:&quot;*&quot;,“26”:&quot;(&quot;,“27”😊&quot;,“28”:&quot; <code>&lt;RET&gt;</code> &quot;,“29”:&quot; <code>&lt;ESC&gt;</code> &quot;,“2a”:&quot; <code>&lt;DEL&gt;</code> &quot;,<br>
+“2b”:&quot;\t&quot;,“2c”:&quot; <code>&lt;SPACE&gt;</code> &quot;,“2d”:&quot;_&quot;,“2e”:&quot;+&quot;,“2f”:&quot;{&quot;,“30”:&quot;}&quot;,“31”:&quot;|&quot;,“32”:&quot; <code>&lt;NON&gt;</code> &quot;,“33”:&quot;&quot;&quot;,“34”:&quot;:&quot;,“35”:&quot; <code>&lt;GA&gt;</code> &quot;,“36”:&quot;<a href="%22,%2237%22:%22">&quot;,“37”:&quot;</a>&quot;,“38”:&quot;?&quot;,“39”:&quot; <code>&lt;CAP&gt;</code> &quot;,“3a”:&quot; <code>&lt;F1&gt;</code> &quot;,“3b”:&quot; <code>&lt;F2&gt;</code> &quot;,<br>
+“3c”:&quot; <code>&lt;F3&gt;</code> &quot;,“3d”:&quot; <code>&lt;F4&gt;</code> &quot;,“3e”:&quot; <code>&lt;F5&gt;</code> &quot;,“3f”:&quot; <code>&lt;F6&gt;</code> &quot;,“40”:&quot; <code>&lt;F7&gt;</code> &quot;,“41”:&quot; <code>&lt;F8&gt;</code> &quot;,“42”:&quot; <code>&lt;F9&gt;</code> &quot;,“43”:&quot; <code>&lt;F10&gt;</code> &quot;,“44”:&quot; <code>&lt;F11&gt;</code> &quot;,“45”:&quot; <code>&lt;F12&gt;</code> &quot;}<br>
+output = []<br>
+keys = open(‘out1.txt’)<br>
+for line in keys:<br>
+try:<br>
+if line[0]!=‘0’ or (line[1]!=‘0’ and line[1]!=‘2’) or<br>
+line[3]!=‘0’ or line[4]!=‘0’ or line[9]!=‘0’ or<br>
+line[10]!=‘0’ or line[12]!=‘0’ or line[13]!=‘0’ or<br>
+line[15]!=‘0’ or line[16]!=‘0’ or line[18]!=‘0’ or<br>
+line[19]!=‘0’ or line[21]!=‘0’ or line[22]!=‘0’ or<br>
+line[6:8]<mark>“00”:<br>
+continue<br>
+if line[6:8] in normalKeys.keys():<br>
+output +=<br>
+[[normalKeys[line[6:8]]],<a href>shiftKeys[line[6:8]]]</a></mark>‘2’]<br>
+else:<br>
+output += [’[unknown]’]<br>
+except:<br>
+pass<br>
+keys.close()</p>
+<p>flag=0<br>
+print(&quot;&quot;.join(output))<br>
+for i in range(len(output)):<br>
+try:<br>
+a=output.index(’ <code>&lt;DEL&gt;</code> ’)<br>
+del output[a]<br>
+del output[a-1]<br>
+except:<br>
+pass<br>
+for i in range(len(output)):<br>
+try:<br>
+if output[i]<mark>&quot; <code>&lt;CAP&gt;</code> &quot;:<br>
+flag+=1<br>
+output.pop(i)<br>
+if flag</mark>2:<br>
+flag=0<br>
+if flag!=0:<br>
+output[i]=output[i].upper()<br>
+except:<br>
+pass<br>
+print (‘output :’ + “”.join(output))</p>
+<p><strong>得到 key</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps59.jpg" alt title="fig:"></p>
+<p><strong>再看 rar 文件</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps60.jpg" alt title="fig:"></p>
+<p><strong>把 rar 文件拖进 010，把 0010h</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps61.jpg" alt title="fig:"></p>
+<p><strong>改后可以看到多了一张图片</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps62.jpg" alt title="fig:"></p>
+<p><strong>用 stegsolve 查看可以发现 Blue plane 0 通道中有二维码</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps63.jpg" alt title="fig:"></p>
+<p><strong>扫描出来 ci {v3erf_0tygidv2_fc0}</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps64.jpg" alt title="fig:"></p>
+<p><strong>结合 xinan，*</strong>* 维吉尼亚密码 **</p>
+<p><a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/weijiniyamima.php"><strong>https://www.qqxiuzi.cn/bianma/weijiniyamima.php</strong></a></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps65.jpg" alt title="fig:"></p>
+<p><strong>然后栅栏密码枚举出来 flag</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps66.jpg" alt title="fig:"></p>
+<h3 id="97guet-ctf2019虚假的压缩包"><a class="markdownIt-Anchor" href="#97guet-ctf2019虚假的压缩包">#</a> 97.[GUET-CTF2019] 虚假的压缩包</h3>
+<p><strong>虚假的压缩包里是：</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps67.jpg" alt title="fig:"></p>
+<p><strong>RSA 计算出来是 5</strong></p>
+<p>import gmpy2</p>
+<p>p=gmpy2.mpz(3)<br>
+q=gmpy2.mpz(11)<br>
+e=gmpy2.mpz(3)<br>
+l=(p-1)<em>(q-1)<br>
+d=gmpy2.invert(e,l)<br>
+c=gmpy2.mpz(26)<br>
+n=p</em>q<br>
+ans=pow(c,d,n)<br>
+print (ans)</p>
+<p><strong>所以真实的压缩包的密码是：*</strong>* 答案是 5**</p>
+<p><strong>解压出来：</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps68.jpg" alt title="fig:"></p>
+<p><strong>图片拖进 010 发现 CRC 校验有误</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps69.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps70.jpg" alt title="fig:"></p>
+<p><strong>更改一下宽高</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps71.jpg" alt title="fig:"></p>
+<p><strong>有个异或 5 的标志，与前面的异或加密是一个思路，不过这是单个字符异或</strong></p>
+<p>#coding=utf-8<br>
+original = open (“亦真亦假”,‘r’).read ()<br>
+flag = open(“flag”,‘w’)<br>
+for i in original:<br>
+tmp = int(i,16)^5<br>
+flag.write(hex(tmp)[2:])</p>
+<p><strong>得到 50 4B 03 03 开头的 txt 文件</strong></p>
+<p><strong>保存为 zip 格式，解压下来得到这堆文件，想到可能是 doc/ppt 等格式</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps72.jpg" alt title="fig:"></p>
+<p><strong>将 zip 后缀改为 doc 后缀</strong></p>
+<p><strong>得到了这段文字</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps73.jpg" alt title="fig:"></p>
+<p><strong>全选上色就能看到末尾的 flag</strong></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps74.jpg" alt title="fig:"></p>
+<p><strong>flag{<em>th2_7ru8_2iP</em>}</strong></p>
 
       <div class="tags">
           <a href="/tags/MISC/" rel="tag"><i class="ic i-tag"></i> MISC</a>
@@ -167,7 +2061,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2024-04-18 17:22:49" itemprop="dateModified" datetime="2024-04-18T17:22:49+08:00">2024-04-18</time>
+    <time title="修改时间：2024-04-18 17:32:08" itemprop="dateModified" datetime="2024-04-18T17:32:08+08:00">2024-04-18</time>
   </span>
 </div>
 
@@ -231,7 +2125,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#buuctf_misc82-97"><span class="toc-number">1.</span> <span class="toc-text"> BUUCTF_MISC(82-97)</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#buuctf_misc82-97"><span class="toc-number">1.</span> <span class="toc-text"> BUUCTF_MISC(82-97)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#82zip"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 82.zip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83guet-ctf2019zips"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 83.[GUET-CTF2019]zips</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#84utctf2020file-header"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 84.[UTCTF2020]file header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#85xman2018%E6%8E%92%E4%BD%8D%E8%B5%9B%E9%80%9A%E8%A1%8C%E8%AF%81"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 85.[XMAN2018 排位赛] 通行证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#86wustctf2020girlfriend"><span class="toc-number">1.0.5.</span> <span class="toc-text"> 86.[WUSTCTF2020]girlfriend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#87ddctf2018"><span class="toc-number">1.0.6.</span> <span class="toc-text"> 87.[DDCTF2018](╯°□°）╯︵ ┻━┻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#88mrctf2020%E5%8D%83%E5%B1%82%E5%A5%97%E8%B7%AF"><span class="toc-number">1.0.7.</span> <span class="toc-text"> 88.[MRCTF2020] 千层套路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#89%E7%99%BE%E9%87%8C%E6%8C%91%E4%B8%80"><span class="toc-number">1.0.8.</span> <span class="toc-text"> 89. 百里挑一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#90suctf2018followme"><span class="toc-number">1.0.9.</span> <span class="toc-text"> 90.[SUCTF2018]followme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#91mrctf2020cyberpunk"><span class="toc-number">1.0.10.</span> <span class="toc-text"> 91.[MRCTF2020]CyberPunk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#92%E5%AE%89%E6%B4%B5%E6%9D%AF-2019attack"><span class="toc-number">1.0.11.</span> <span class="toc-text"> 92.[安洵杯 2019] Attack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#93utctf2020basic-forensics"><span class="toc-number">1.0.12.</span> <span class="toc-text"> 93.[UTCTF2020]basic-forensics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#94suctf-2019game"><span class="toc-number">1.0.13.</span> <span class="toc-text"> 94.[SUCTF 2019]Game</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#95bsidessf2019zippy"><span class="toc-number">1.0.14.</span> <span class="toc-text"> 95.[BSidesSF2019]zippy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#96usb"><span class="toc-number">1.0.15.</span> <span class="toc-text"> 96.USB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#97guet-ctf2019%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-number">1.0.16.</span> <span class="toc-text"> 97.[GUET-CTF2019] 虚假的压缩包</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
@@ -356,7 +2250,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
   </li>
 
       
@@ -384,7 +2278,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
   </li>
 
       
@@ -399,18 +2293,6 @@ RZero0ne =  = 答案在明天，每个明天</title>
 </div>
 
     <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
-</div>
-
-    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
   </li>
 
       
@@ -438,7 +2320,19 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
+</div>
+
+    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
   </li>
 
   </ul>

@@ -153,6 +153,85 @@ RZero0ne =  = 答案在明天，每个明天</title>
     
 
     <h1 id="buuctf_misc70-81"><a class="markdownIt-Anchor" href="#buuctf_misc70-81">#</a> BUUCTF_MISC(70-81)</h1>
+<h3 id="70actf新生赛2020swp"><a class="markdownIt-Anchor" href="#70actf新生赛2020swp">#</a> 70.[ACTF 新生赛 2020] swp</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps179.jpg" alt title="fig:"></p>
+<p>导出 http 对象中发现有 zip，提取出来</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps180.jpg" alt title="fig:"></p>
+<p>发现 zip 里有两个加密文件，010 里发现是伪加密</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps181.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps182.jpg" alt title="fig:"></p>
+<p>把 01 修改为 00，即可打开两个文件</p>
+<p>flag 里没找到 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps183.jpg" alt title="fig:"></p>
+<p>在.flag.swp 中找到 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps184.jpg" alt title="fig:"></p>
+<h3 id="71utctf2020docx"><a class="markdownIt-Anchor" href="#71utctf2020docx">#</a> 71.[UTCTF2020]docx</h3>
+<p>把 docx 文件后缀改为 rar</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps185.jpg" alt title="fig:"></p>
+<p>media 里找到 flag 图片</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps186.jpg" alt title="fig:"></p>
+<h3 id="72gxyctf2019sxmgdghpcybiyxnlpw"><a class="markdownIt-Anchor" href="#72gxyctf2019sxmgdghpcybiyxnlpw">#</a> 72.[GXYCTF2019]SXMgdGhpcyBiYXNlPw==</h3>
+<p>base64 解密题目：Is this base?</p>
+<p>flag.txt 里：</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps187.jpg" alt title="fig:"></p>
+<p>base64 解密发现出来的字符很奇怪，上网搜了发现文本是 base64 隐写而不是 base64 加密</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps188.jpg" alt title="fig:"></p>
+<p>利用脚本得到 flag</p>
+<p>import base64</p>
+<p>def get_base64_diff_value(s1, s2):<br>
+base64chars =<br>
+‘ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/’<br>
+res = 0<br>
+for i in range(len(s2)):<br>
+if s1[i] != s2[i]:<br>
+return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))<br>
+return res</p>
+<p>def solve_stego():<br>
+with open (‘output328.txt’, ‘r’) as f: # 修改为’r’模式<br>
+ file_lines = f.readlines ()<br>
+bin_str = ‘’<br>
+for line in file_lines:<br>
+steg_line = line.strip () # 使用 strip () 移除换行符<br>
+ norm_line =<br>
+base64.b64encode(base64.b64decode(steg_line)).decode(‘ascii’).strip()<br>
+# 使用 base64 模块进行编解码，并转换为字符串<br>
+ diff = get_base64_diff_value (steg_line, norm_line)<br>
+print(diff)<br>
+pads_num = steg_line.count(’=’)<br>
+if diff:<br>
+bin_str += bin(diff)[2:].zfill(pads_num * 2)<br>
+else:<br>
+bin_str += ‘0’ * pads_num * 2<br>
+print(goflag(bin_str))</p>
+<p>def goflag(bin_str):<br>
+res_str = ‘’<br>
+for i in range(0, len(bin_str), 8):<br>
+res_str += chr(int(bin_str[i:i + 8], 2))<br>
+return res_str</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>’:<br>
+solve_stego()</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps189.jpg" alt title="fig:"></p>
+<p fazhazhenhaoting>GXY</p>
+<h3 id="73间谍启示录"><a class="markdownIt-Anchor" href="#73间谍启示录">#</a> 73. 间谍启示录</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps190.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps191.jpg" alt title="fig:"></p>
+<p>分离出来了一个 rar 文件，</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps192.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps193.jpg" alt title="fig:"></p>
+<h3 id="74喵喵喵"><a class="markdownIt-Anchor" href="#74喵喵喵">#</a> 74. 喵喵喵</h3>
+<p>用 stegsolve 看是不是 lsb 隐写，在 BGR 中发现有 png，保存下来</p>
+<h2 id><a class="markdownIt-Anchor" href="#">#</a> <img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps194.jpg" alt title="fig:"></h2>
+<p>发现格式错误的 png 文件</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps195.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps196.jpg" alt title="fig:"></p>
+<p>修改完可以看到出现了半个二维码</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps197.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps198.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps199.jpg" alt title="fig:"></p>
+<p>用脚本爆破出宽高</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps200.jpg" alt title="fig:"></p>
+<p>得到了完整的二维码，里面有一个百度网盘链接</p>
+<h2 id="-2"><a class="markdownIt-Anchor" href="#-2">#</a> <img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps201.jpg" alt title="fig:"></h2>
 
       <div class="tags">
           <a href="/tags/MISC/" rel="tag"><i class="ic i-tag"></i> MISC</a>
@@ -167,7 +246,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2024-04-18 17:18:58" itemprop="dateModified" datetime="2024-04-18T17:18:58+08:00">2024-04-18</time>
+    <time title="修改时间：2024-04-18 17:31:09" itemprop="dateModified" datetime="2024-04-18T17:31:09+08:00">2024-04-18</time>
   </span>
 </div>
 
@@ -231,7 +310,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#buuctf_misc70-81"><span class="toc-number">1.</span> <span class="toc-text"> BUUCTF_MISC(70-81)</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#buuctf_misc70-81"><span class="toc-number">1.</span> <span class="toc-text"> BUUCTF_MISC(70-81)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#70actf%E6%96%B0%E7%94%9F%E8%B5%9B2020swp"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 70.[ACTF 新生赛 2020] swp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#71utctf2020docx"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 71.[UTCTF2020]docx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#72gxyctf2019sxmgdghpcybiyxnlpw"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 72.[GXYCTF2019]SXMgdGhpcyBiYXNlPw&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#73%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 73. 间谍启示录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#74%E5%96%B5%E5%96%B5%E5%96%B5"><span class="toc-number">1.0.5.</span> <span class="toc-text"> 74. 喵喵喵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-2"><span class="toc-number">1.2.</span> <span class="toc-text"> </span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
@@ -356,6 +435,34 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
+    <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
     <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
   </li>
 
@@ -363,28 +470,12 @@ RZero0ne =  = 答案在明天，每个明天</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
-</div>
-
-    <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
+    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
   </li>
 
       
@@ -412,7 +503,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
   </li>
 
       
@@ -426,19 +517,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
-</div>
-
-    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
   </li>
 
   </ul>
