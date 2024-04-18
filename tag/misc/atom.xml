@@ -3,13 +3,125 @@
     <id>https://RZero0ne.github.io</id>
     <title> • Posts by &#34;misc&#34; tag</title>
     <link href="https://RZero0ne.github.io" />
-    <updated>2024-04-18T08:51:29.210Z</updated>
+    <updated>2024-04-18T09:11:36.687Z</updated>
     <category term="MISC" />
+    <entry>
+        <id>https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(36-51)/</id>
+        <title>BUUCTF_MISC(36-51)</title>
+        <link rel="alternate" href="https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(36-51)/"/>
+        <content type="html">&lt;h1 id=&#34;buuctf_misc36-51&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#buuctf_misc36-51&#34;&gt;#&lt;/a&gt; BUUCTF_MISC(36-51)&lt;/h1&gt;
+</content>
+        <category term="MISC" />
+        <updated>2024-04-18T09:11:36.687Z</updated>
+    </entry>
+    <entry>
+        <id>https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(21-35)/</id>
+        <title>BUUCTF_MISC(21-35)</title>
+        <link rel="alternate" href="https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(21-35)/"/>
+        <content type="html">&lt;h1 id=&#34;buuctf_misc21-35&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#buuctf_misc21-35&#34;&gt;#&lt;/a&gt; BUUCTF_MISC(21-35)&lt;/h1&gt;
+</content>
+        <category term="MISC" />
+        <updated>2024-04-18T09:08:23.071Z</updated>
+    </entry>
     <entry>
         <id>https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(1-20)/</id>
         <title>BUUCTF_MISC(1-20)</title>
         <link rel="alternate" href="https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(1-20)/"/>
-        <content type="html">&lt;h1 id=&#34;buuctf_misc1-20&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#buuctf_misc1-20&#34;&gt;#&lt;/a&gt; &lt;em&gt;&lt;strong&gt;*BUUCTF_MISC(1-20)*&lt;/strong&gt;&lt;/em&gt;&lt;/h1&gt;
+        <content type="html">&lt;h1 id=&#34;buuctf_misc1-20&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#buuctf_misc1-20&#34;&gt;#&lt;/a&gt; BUUCTF_MISC(1-20)&lt;/h1&gt;
+&lt;h3 id=&#34;1签到&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1签到&#34;&gt;#&lt;/a&gt; 1. 签到&lt;/h3&gt;
+&lt;p buu_ctf&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;2金三胖&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2金三胖&#34;&gt;#&lt;/a&gt; 2. 金三胖&lt;/h3&gt;
+&lt;p&gt;拆分 gif 在线网站：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90b29sLmx1L2dpZnNwbGl0dGVyLw==&#34;&gt;https://tool.lu/gifsplitter/&lt;/span&gt;&lt;/p&gt;
+&lt;p hello_hongke&gt;flag&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps1.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3你竟然赶我走&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#3你竟然赶我走&#34;&gt;#&lt;/a&gt; 3. 你竟然赶我走&lt;/h3&gt;
+&lt;p&gt;打开发现 jpg 文件&lt;/p&gt;
+&lt;p&gt;010 打开拖到末尾&lt;/p&gt;
+&lt;p stego_is_s0_bor1ing&gt;flag&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps2.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps3.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;4二维码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#4二维码&#34;&gt;#&lt;/a&gt; 4. 二维码&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps4.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;没发现 flag，010 里面可以看到有个 txt 文件隐藏在里面&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps5.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps6.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;得到一个加密的 zip，暴力破解出密码 7639&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps7.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p vjpw_wnoei&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps8.jpg&#34; alt title=&#34;fig:&#34;&gt;解压出来看到 flag&lt;/p&gt;
+&lt;h3 id=&#34;5大白&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#5大白&#34;&gt;#&lt;/a&gt; 5. 大白&lt;/h3&gt;
+&lt;p&gt;打开图片发现图片 crc32 校验错误，010 里把图片长度改大一点&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps9.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p he1|0_d4_ba1&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;6乌镇峰会种图&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#6乌镇峰会种图&#34;&gt;#&lt;/a&gt; 6. 乌镇峰会种图&lt;/h3&gt;
+&lt;p&gt;图片拖到 010 看到末尾&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps10.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p 97314e7864a8f62627b26f3f998c37f1&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;7n种方法解决&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#7n种方法解决&#34;&gt;#&lt;/a&gt; 7.N 种方法解决&lt;/h3&gt;
+&lt;p&gt;把 exe 后缀改成 txt&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps11.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;发现 base64 加密，解密出了个二维码&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps12.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps13.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p dca57f966e4e4e31fd5b15417da63269&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;8wireshark&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#8wireshark&#34;&gt;#&lt;/a&gt; 8.wireshark&lt;/h3&gt;
+&lt;p&gt;追踪 tcp 流，在 2 流发现 flag&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps14.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p ffb7567a1d4f4abdffdb54e022f8facd&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;9基础破解&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#9基础破解&#34;&gt;#&lt;/a&gt; 9. 基础破解&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps15.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;得到 flag.txt，base64 解密&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps16.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p 70354300a5100ba78068805661b93a5c&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;10文件中的秘密&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#10文件中的秘密&#34;&gt;#&lt;/a&gt; 10. 文件中的秘密&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps17.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;搜索 {，往下拉几行就可以看到 flag 了&lt;/p&gt;
+&lt;p&gt;备注里也有 flag&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps18.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p 870c5a72806115cb5439345d8b014396&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;11lsb&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#11lsb&#34;&gt;#&lt;/a&gt; 11.LSB&lt;/h3&gt;
+&lt;p&gt;方法一：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps19.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;SAME BIN 一个 png，得到 flag&lt;/p&gt;
+&lt;p&gt;方法二：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps20.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;zsteg -e b1,rgb,lsb,xy flag11.png -&amp;gt;3.png&lt;/p&gt;
+&lt;p 1sb_i4_s0_ea4y&gt;cumtctf&lt;/p&gt;
+&lt;h3 id=&#34;12zip伪加密&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#12zip伪加密&#34;&gt;#&lt;/a&gt; 12.zip 伪加密&lt;/h3&gt;
+&lt;h2 id&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps21.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/h2&gt;
+&lt;p adm1n-b2g-ku-szip&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;13被嗅探的流量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#13被嗅探的流量&#34;&gt;#&lt;/a&gt; 13. 被嗅探的流量&lt;/h3&gt;
+&lt;p&gt;追踪 http 流到 2 流，拖到末尾&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps22.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p da73d88936010da1eeeb36e945ec4b97&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;14rar&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#14rar&#34;&gt;#&lt;/a&gt; 14.rar&lt;/h3&gt;
+&lt;p&gt;直接暴力破解出四位密码得到 txt 中的 flag&lt;/p&gt;
+&lt;p 1773c5da790bd3caff38e3decd180eb7&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;15qr&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#15qr&#34;&gt;#&lt;/a&gt; 15.qr&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps23.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p 878865ce73370a4ce607d21ca01b5e59&gt;Flag&lt;/p&gt;
+&lt;h3 id=&#34;16镜子里面的世界&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#16镜子里面的世界&#34;&gt;#&lt;/a&gt; 16. 镜子里面的世界&lt;/h3&gt;
+&lt;p&gt;zsteg 直接得到 flag&lt;/p&gt;
+&lt;p st3g0_saurus_wr3cks&gt;flag&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps24.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;17ningen&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#17ningen&#34;&gt;#&lt;/a&gt; 17.ningen&lt;/h3&gt;
+&lt;p&gt;图片使用 binwalk 分离出来了一个加密 zip&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps25.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps26.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p b025fc9ca797a67d2103bfbc407a6d5f&gt;打开得到 flag&lt;/p&gt;
+&lt;h3 id=&#34;18爱因斯坦&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#18爱因斯坦&#34;&gt;#&lt;/a&gt; 18. 爱因斯坦&lt;/h3&gt;
+&lt;p&gt;图片用 010 打开拖到末尾发现&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps27.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;分离出来一个加密压缩包，属性里找到密码&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps28.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;用 this_is_not_password 解压出 flag&lt;/p&gt;
+&lt;p dd22a92bf2cceb6c0cd0d6b83ff51606&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;19小明的保险箱&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#19小明的保险箱&#34;&gt;#&lt;/a&gt; 19. 小明的保险箱&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps29.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;binwalk 分离图片，发现加密 zip，根据题目提示 4 位纯数字密码，暴力破解，得到 flag&lt;/p&gt;
+&lt;p 75a3d68bf071ee188c418ea6cf0bb043&gt;flag&lt;/p&gt;
+&lt;h3 id=&#34;20easycap&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#20easycap&#34;&gt;#&lt;/a&gt; 20.easycap&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps30.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p 385b87afc8671dee07550290d16a8071&gt;flag&lt;/p&gt;
 </content>
         <category term="MISC" />
         <updated>2024-04-18T08:51:29.210Z</updated>
