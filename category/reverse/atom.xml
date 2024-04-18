@@ -17,11 +17,7 @@
 &lt;p&gt;输入 flag, 检验长度，循环异或（和 0x34 异或再加 900）&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps76.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps77.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
-&lt;p&gt;enc = [1022, 1003, 1003, 1019, 996, 1014, 979, 976, 904, 970, 1007,&lt;br&gt;
-905, 971, 1007, 971, 904, 1007, 981, 985, 971, 977, 973]&lt;br&gt;
-flag = [chr((enc[i]-900)^0x34) for i in range(len(enc))]&lt;br&gt;
-print(’’.join(flag))&lt;/p&gt;
-&lt;p x0r_1s_s0_easy&gt;# NSSCTF&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;enc = [1022, 1003, 1003, 1019, 996, 1014, 979, 976, 904, 970, 1007, 905, 971, 1007, 971, 904, 1007, 981, 985, 971, 977, 973]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;flag = [chr((enc[i]-900)^0x34) for i in range(len(enc))]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;&amp;#x27;.join(flag))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# NSSCTF&amp;#123;x0r_1s_s0_easy&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
         <category term="Reverse" />
         <updated>2024-04-18T09:24:08.594Z</updated>

@@ -177,39 +177,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <p>base64 解密发现出来的字符很奇怪，上网搜了发现文本是 base64 隐写而不是 base64 加密</p>
 <p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps188.jpg" alt title="fig:"></p>
 <p>利用脚本得到 flag</p>
-<p>import base64</p>
-<p>def get_base64_diff_value(s1, s2):<br>
-base64chars =<br>
-‘ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/’<br>
-res = 0<br>
-for i in range(len(s2)):<br>
-if s1[i] != s2[i]:<br>
-return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))<br>
-return res</p>
-<p>def solve_stego():<br>
-with open (‘output328.txt’, ‘r’) as f: # 修改为’r’模式<br>
- file_lines = f.readlines ()<br>
-bin_str = ‘’<br>
-for line in file_lines:<br>
-steg_line = line.strip () # 使用 strip () 移除换行符<br>
- norm_line =<br>
-base64.b64encode(base64.b64decode(steg_line)).decode(‘ascii’).strip()<br>
-# 使用 base64 模块进行编解码，并转换为字符串<br>
- diff = get_base64_diff_value (steg_line, norm_line)<br>
-print(diff)<br>
-pads_num = steg_line.count(’=’)<br>
-if diff:<br>
-bin_str += bin(diff)[2:].zfill(pads_num * 2)<br>
-else:<br>
-bin_str += ‘0’ * pads_num * 2<br>
-print(goflag(bin_str))</p>
-<p>def goflag(bin_str):<br>
-res_str = ‘’<br>
-for i in range(0, len(bin_str), 8):<br>
-res_str += chr(int(bin_str[i:i + 8], 2))<br>
-return res_str</p>
-<p>if <strong>name</strong> == ‘<strong>main</strong>’:<br>
-solve_stego()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line"></span><br><span class="line">def get_base64_diff_value(s1, s2):</span><br><span class="line">    base64chars = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span><br><span class="line">    res = 0</span><br><span class="line">    for i in range(len(s2)):</span><br><span class="line">        if s1[i] != s2[i]:</span><br><span class="line">            return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def solve_stego():</span><br><span class="line">    with open(&#x27;output328.txt&#x27;, &#x27;r&#x27;) as f:  # 修改为&#x27;r&#x27;模式</span><br><span class="line">        file_lines = f.readlines()</span><br><span class="line">        bin_str = &#x27;&#x27;</span><br><span class="line">        for line in file_lines:</span><br><span class="line">            steg_line = line.strip()  # 使用strip()移除换行符</span><br><span class="line">            norm_line = base64.b64encode(base64.b64decode(steg_line)).decode(&#x27;ascii&#x27;).strip()  # 使用base64模块进行编解码，并转换为字符串</span><br><span class="line">            diff = get_base64_diff_value(steg_line, norm_line)</span><br><span class="line">            print(diff)</span><br><span class="line">            pads_num = steg_line.count(&#x27;=&#x27;)</span><br><span class="line">            if diff:</span><br><span class="line">                bin_str += bin(diff)[2:].zfill(pads_num * 2)</span><br><span class="line">            else:</span><br><span class="line">                bin_str += &#x27;0&#x27; * pads_num * 2</span><br><span class="line">            print(goflag(bin_str))</span><br><span class="line"></span><br><span class="line">def goflag(bin_str):</span><br><span class="line">    res_str = &#x27;&#x27;</span><br><span class="line">    for i in range(0, len(bin_str), 8):</span><br><span class="line">        res_str += chr(int(bin_str[i:i + 8], 2))</span><br><span class="line">    return res_str</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    solve_stego()</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps189.jpg" alt title="fig:"></p>
 <p fazhazhenhaoting>GXY</p>
 <h3 id="73间谍启示录"><a class="markdownIt-Anchor" href="#73间谍启示录">#</a> 73. 间谍启示录</h3>
@@ -246,7 +214,7 @@ solve_stego()</p>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2024-04-18 17:31:09" itemprop="dateModified" datetime="2024-04-18T17:31:09+08:00">2024-04-18</time>
+    <time title="修改时间：2024-04-18 17:44:51" itemprop="dateModified" datetime="2024-04-18T17:44:51+08:00">2024-04-18</time>
   </span>
 </div>
 
@@ -435,6 +403,20 @@ solve_stego()</p>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
+    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
     <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
   </li>
 
@@ -463,33 +445,7 @@ solve_stego()</p>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
-</div>
-
-    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
-</div>
-
-    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
   </li>
 
       
@@ -517,7 +473,19 @@ solve_stego()</p>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
+</div>
+
+    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
   </li>
 
   </ul>

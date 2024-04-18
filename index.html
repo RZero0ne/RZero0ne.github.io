@@ -89,12 +89,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
         </ul>
       </div>
     </header>
@@ -200,11 +200,7 @@
 
 输入 flag, 检验长度，循环异或（和 0x34 异或再加 900）
 
-enc = [1022, 1003, 1003, 1019, 996, 1014, 979, 976, 904, 970, 1007,
-905, 971, 1007, 971, 904, 1007, 981, 985, 971, 977, 973]
-flag = [chr((enc[i]-900)^0x34) for i in range(len(enc))]
-print(’’.join(flag))
-# NSSCTF
+12345enc = [1022, 1003, 1003, 1019, 996, 1014, 979, 976, 904, 970, 1007, 905, 971, 1007, 971, 904, 1007, 981, 985, 971, 977, 973]flag = [chr((enc[i]-900)^0x34) for i in...
     </div>
     <div class="meta footer">
       <span>
@@ -237,17 +233,8 @@ print(’’.join(flag))
 # 82.zip
 下载下来 zip 里有 68 个 zip，每个都需要密码，试了一个 zip，可以 4 位爆破出密码
 
-使 ** 用 CRC32 爆破得到其内容 zip，先以 out0.zip 做个例子，out0.zip 的 CRC32 校验码为：0x75f90d3a**
-import zipfile
-import string
-import binascii
-def CrackCrc(crc):
-for i in dic:
-for j in dic:
-for k in dic:
-for h in dic:
-s = i + j + k + h
-if...
+使用 CRC32 爆破得到其内容 zip，先以 out0.zip 做个例子，out0.zip 的 CRC32 校验码为：0x75f90d3a
+123456789101112131415161718192021222324252627import zipfileimport stringimport binasciidef CrackCrc(crc):	for i in dic:		for j in dic:			for k in...
     </div>
     <div class="meta footer">
       <span>
@@ -326,6 +313,9 @@ flag.txt...
     <div class="excerpt">
         # BUUCTF_MISC(52-69)
 # 52. 穿越时空的思念
+
+摩斯电码
+1..-. &#92;-&#92;-&#92;-&#92;-- ..&#92;-&#92;-- &#92;-&#92;-&#92;--. -&#92;... -.. -&#92;.... ..-. &#92;..... &#92;..... .&#92;-&#92;-&#92;-- .&#92;-&#92;-&#92;-- &#92;...&#92;-- &#92;-&#92;-&#92;--. . . -.. . -&#92;... &#92;-&#92;--.. . &#92;....- &#92;........
     </div>
     <div class="meta footer">
       <span>
@@ -356,6 +346,25 @@ flag.txt...
     <div class="excerpt">
         # BUUCTF_MISC(36-51)
 # 36.[GXYCTF2019] 佛系青年
+zip 伪加密
+
+佛曰加密 https://ctf.bugku.com/tool/todousharp
+flag
+# 37. 刷新过的图片
+利用 F5-steganography 工具输入 java Extract Misc.jpg
+
+得到 output.txt, 发现文件开头是 pk
+
+拖到 windows，改为 flag.zip
+打开发现需要密码，010 看是伪加密，01 改为 00
+
+得到 flag
+# 38.[BJDCTF2020] 你猜我是个啥
+
+打开发现提示
+拖到最后发现 flag
+
+#...
     </div>
     <div class="meta footer">
       <span>
@@ -606,20 +615,6 @@ flag
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
-</div>
-
     <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
   </li>
 
@@ -633,20 +628,6 @@ flag
 </div>
 
     <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
-</div>
-
-    <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
   </li>
 
       
@@ -674,7 +655,35 @@ flag
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
+    <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
     <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
   </li>
 
       

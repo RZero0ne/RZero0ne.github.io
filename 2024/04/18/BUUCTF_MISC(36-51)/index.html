@@ -154,6 +154,155 @@ RZero0ne =  = 答案在明天，每个明天</title>
 
     <h1 id="buuctf_misc36-51"><a class="markdownIt-Anchor" href="#buuctf_misc36-51">#</a> BUUCTF_MISC(36-51)</h1>
 <h3 id="36gxyctf2019佛系青年"><a class="markdownIt-Anchor" href="#36gxyctf2019佛系青年">#</a> 36.[GXYCTF2019] 佛系青年</h3>
+<p>zip 伪加密</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps64.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps65.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps66.jpg" alt title="fig:"></p>
+<p>佛曰加密<span class="exturl" data-url="aHR0cHM6Ly9jdGYuYnVna3UuY29tL3Rvb2wvdG9kb3VzaGFycA=="> https://ctf.bugku.com/tool/todousharp</span></p>
+<p w0_fo_ci_be1>flag</p>
+<h3 id="37刷新过的图片"><a class="markdownIt-Anchor" href="#37刷新过的图片">#</a> 37. 刷新过的图片</h3>
+<p>利用 F5-steganography 工具输入 java Extract Misc.jpg</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps67.jpg" alt title="fig:"></p>
+<p>得到 output.txt, 发现文件开头是 pk</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps68.jpg" alt title="fig:"></p>
+<p>拖到 windows，改为 flag.zip</p>
+<p>打开发现需要密码，010 看是伪加密，01 改为 00</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps69.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps70.jpg" alt title="fig:"></p>
+<p>得到 flag</p>
+<h3 id="38bjdctf2020你猜我是个啥"><a class="markdownIt-Anchor" href="#38bjdctf2020你猜我是个啥">#</a> 38.[BJDCTF2020] 你猜我是个啥</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps71.jpg" alt title="fig:"></p>
+<p>打开发现提示</p>
+<p>拖到最后发现 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps72.jpg" alt title="fig:"></p>
+<h3 id="39snake"><a class="markdownIt-Anchor" href="#39snake">#</a> 39.snake</h3>
+<p>010 看图片中有没有藏什么信息</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps73.jpg" alt title="fig:"></p>
+<p>binwalk 分离出压缩包和 key<img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps74.jpg" alt title="fig:"></p>
+<p>key.txt:</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps75.jpg" alt title="fig:"></p>
+<p>base64 解密</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps76.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps77.jpg" alt title="fig:"></p>
+<p>得到 key：anaconda</p>
+<p>serpent 加密算法，<span class="exturl" data-url="aHR0cDovL3NlcnBlbnQub25saW5lLWRvbWFpbi10b29scy5jb20v">http://serpent.online-domain-tools.com/</span></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps78.jpg" alt title="fig:">得到 flag</p>
+<h2 id="c"><a class="markdownIt-Anchor" href="#c">#</a> C</h2>
+<p>p<br>
+t</p>
+<h3 id="40秘密文件"><a class="markdownIt-Anchor" href="#40秘密文件">#</a> 40. 秘密文件</h3>
+<p>追踪 tcp 流，在 0 流就能看到隐藏了一个 rar 文件</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps79.jpg" alt title="fig:"></p>
+<p>binwalk 拿到 rar 文件，暴力破解出密码</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps80.jpg" alt title="fig:"></p>
+<p>txt 文件中找到 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps81.jpg" alt title="fig:"></p>
+<h3 id="41bjdctf2020鸡你太美"><a class="markdownIt-Anchor" href="#41bjdctf2020鸡你太美">#</a> 41.[BJDCTF2020] 鸡你太美</h3>
+<p>两个 gif 都拖到 010 中观察：</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps82.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps83.jpg" alt title="fig:"></p>
+<p>对比可知 gif 的文件头为 47 49 46 38，需要把篮球副本前面加上文件头</p>
+<p>用 hxd，插入 4 个字节</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps84.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps85.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps86.jpg" alt title="fig:"></p>
+<p>保存就可以看到图片中的 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps87.jpg" alt title="fig:"></p>
+<p zhi_yin_you_are_beautiful>flag</p>
+<h3 id="42bjdctf2020just_a_rar"><a class="markdownIt-Anchor" href="#42bjdctf2020just_a_rar">#</a> 42.[BJDCTF2020]just_a_rar</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps88.jpg" alt title="fig:"></p>
+<p>4 位数密码爆破完了得到一个 flag.jpg，属性里发现</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps89.jpg" alt title="fig:"></p>
+<p wadf_123>flag</p>
+<h3 id="43菜刀666"><a class="markdownIt-Anchor" href="#43菜刀666">#</a> 43. 菜刀 666</h3>
+<p>菜刀流量主要看 POST</p>
+<p>追踪 tcp 流发现 7 流中隐藏了大量数据</p>
+<p>解析 z1 和 z2</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps90.jpg" alt title="fig:"></p>
+<p>z1：</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps91.jpg" alt title="fig:"></p>
+<p>z2：从 FF D8 开始一直复制到 FF<br>
+D9，放到 HXD 中导出 jpg 文件，得到 6666.jpg，图片中间的文字提取出来</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps92.jpg" alt title="fig:"></p>
+<p>在 tcp 流的 7 流最下面还发现了 jpg，txt，zip 文件</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps93.jpg" alt title="fig:"></p>
+<p>binwalk 分离出一个 zip</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps94.jpg" alt title="fig:"></p>
+<p>将刚才的密码输入进去，得到 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps95.jpg" alt title="fig:"></p>
+<h3 id="44bjdctf2020一叶障目"><a class="markdownIt-Anchor" href="#44bjdctf2020一叶障目">#</a> 44.[BJDCTF2020] 一叶障目</h3>
+<p>图片用 010 打开发现 CRC 校验报错，利用脚本爆破出宽高</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import zlib</span><br><span class="line">import struct</span><br><span class="line">import argparse</span><br><span class="line">import itertools</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(&quot;-f&quot;, type=str, default=None, required=True,</span><br><span class="line">                    help=&quot;1.png&quot;)</span><br><span class="line">args  = parser.parse_args()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bin_data = open(args.f, &#x27;rb&#x27;).read()</span><br><span class="line">crc32key = zlib.crc32(bin_data[12:29]) # 计算crc</span><br><span class="line">original_crc32 = int(bin_data[29:33].hex(), 16) # 原始crc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if crc32key == original_crc32: # 计算crc对比原始crc</span><br><span class="line">    print(&#x27;宽高没有问题!&#x27;)</span><br><span class="line">else:</span><br><span class="line">    input_ = input(&quot;宽高被改了, 是否CRC爆破宽高? (Y/n):&quot;)</span><br><span class="line">    if input_ not in [&quot;Y&quot;, &quot;y&quot;, &quot;&quot;]:</span><br><span class="line">        exit()</span><br><span class="line">    else: </span><br><span class="line">        for i, j in itertools.product(range(4095), range(4095)): # 理论上0x FF FF FF FF，但考虑到屏幕实际/cpu，0x 0F FF就差不多了，也就是4095宽度和高度</span><br><span class="line">            data = bin_data[12:16] + struct.pack(&#x27;&gt;i&#x27;, i) + struct.pack(&#x27;&gt;i&#x27;, j) + bin_data[24:29]</span><br><span class="line">            crc32 = zlib.crc32(data)</span><br><span class="line">            if(crc32 == original_crc32): # 计算当图片大小为i:j时的CRC校验值，与图片中的CRC比较，当相同，则图片大小已经确定</span><br><span class="line">                print(f&quot;\nCRC32: &#123;hex(original_crc32)&#125;&quot;)</span><br><span class="line">                print(f&quot;宽度: &#123;i&#125;, hex: &#123;hex(i)&#125;&quot;)</span><br><span class="line">                print(f&quot;高度: &#123;j&#125;, hex: &#123;hex(j)&#125;&quot;)</span><br><span class="line">                exit(0)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps96.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps97.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps98.jpg" alt title="fig:"></p>
+<p 66666>得到 flag</p>
+<h3 id="45swpu2019神奇的二维码"><a class="markdownIt-Anchor" href="#45swpu2019神奇的二维码">#</a> 45.[SWPU2019] 神奇的二维码</h3>
+<p>二维码扫出来发现</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps99.jpg" alt title="fig:"></p>
+<p>binwalk 分离出这些</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps100.jpg" alt title="fig:"></p>
+<p>encode.txt 里面是 asdfghjkl1234567890</p>
+<p>flag.doc 里面是</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps101.jpg" alt title="fig:"></p>
+<p>一直叠加 base64 解密，最后得到 comEON_YOuAreSOSoS0great，用这个密码解开了一个 zip 得到 good.mp3</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps102.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps103.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps104.jpg" alt title="fig:"></p>
+<p>发现摩斯电码，转换为字母得到 MORSEISVERYVERYEASY</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\-- \-\-- .-. \... . .. \... \...- . .-. -.\-- \...- . .-. -.\-- . .- \... -.\--</span><br></pre></td></tr></table></figure>
+<p morseisveryveryeasy>flag</p>
+<h3 id="46bjdctf2020纳尼"><a class="markdownIt-Anchor" href="#46bjdctf2020纳尼">#</a> 46.[BJDCTF2020] 纳尼</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps105.jpg" alt title="fig:"></p>
+<p>gif 文件发现打不开，添加一下 gif 头</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps106.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps107.jpg" alt title="fig:"></p>
+<p>利用工具拆分 gif 图片，得到 4 张图片，</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps108.jpg" alt title="fig:"></p>
+<p>拼接起来 base64 解码就是 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps109.jpg" alt title="fig:"></p>
+<p wang_bao_qiang_is_sad>CTF</p>
+<h3 id="47hbnis2018excel破解"><a class="markdownIt-Anchor" href="#47hbnis2018excel破解">#</a> 47.[HBNIS2018] excel 破解</h3>
+<p>表格用 010 打开搜索 flag 直接找到</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps110.jpg" alt title="fig:"></p>
+<h3 id="48梅花香之苦寒来"><a class="markdownIt-Anchor" href="#48梅花香之苦寒来">#</a> 48. 梅花香之苦寒来</h3>
+<p>用 010 打开，发现后面有一连串 16 进制，复制下来放进 CyberChef</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps111.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps112.jpg" alt title="fig:"></p>
+<p>一连串坐标保存下来，将坐标的（，）全部去掉</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps113.jpg" alt title="fig:"></p>
+<p>使用 gnuplot 根据坐标信息，绘制出来一个二维码</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps114.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps115.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps116.jpg" alt title="fig:"></p>
+<p 40fc0a979f759c8892f4dc045e28b820>flag</p>
+<h3 id="49hbnis2018来题中等的吧"><a class="markdownIt-Anchor" href="#49hbnis2018来题中等的吧">#</a> 49.[HBNIS2018] 来题中等的吧</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps117.jpg" alt title="fig:"></p>
+<p>首先拿到图片，检验一下图片是否展示完整，查看 crc32 校验是否正确</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps118.jpg" alt title="fig:"></p>
+<p>没有问题，摩斯电码解密</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.- .-.. .\--. \.... .- .-.. .- -\...</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps119.jpg" alt title="fig:"></p>
+<p alphalab>flag</p>
+<h3 id="50actf新生赛2020outguess"><a class="markdownIt-Anchor" href="#50actf新生赛2020outguess">#</a> 50.[ACTF 新生赛 2020] outguess</h3>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps120.jpg" alt title="fig:"></p>
+<p>得到一个 abc</p>
+<p>根据题目提示使用 outguess，</p>
+<p>得到 flag</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps121.jpg" alt title="fig:"></p>
+<h3 id="51谁赢了比赛"><a class="markdownIt-Anchor" href="#51谁赢了比赛">#</a> 51. 谁赢了比赛？</h3>
+<p>binwalk 分离出了 1 个 zip</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps122.jpg" alt title="fig:"></p>
+<p>真加密，爆破出来了 4 位密码</p>
+<p>打开得到一个 flag.txt 和一个棋盘图片</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps123.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps124.jpg" alt title="fig:"></p>
+<p>用 stegsolve 的 Frame Browser 看到 310 中有个 doyoukonwwhereisflag，save 下来</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps125.jpg" alt title="fig:"></p>
+<p>打开 save 下来的 bmp 文件，查看到 red plane 0 中看到一个二维码</p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps126.jpg" alt title="fig:"></p>
+<p><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps127.jpg" alt title="fig:"></p>
+<p shanxiajingwu_won_the_game>得到 flag</p>
 
       <div class="tags">
           <a href="/tags/MISC/" rel="tag"><i class="ic i-tag"></i> MISC</a>
@@ -168,7 +317,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2024-04-18 17:29:30" itemprop="dateModified" datetime="2024-04-18T17:29:30+08:00">2024-04-18</time>
+    <time title="修改时间：2024-04-18 17:39:59" itemprop="dateModified" datetime="2024-04-18T17:39:59+08:00">2024-04-18</time>
   </span>
 </div>
 
@@ -232,7 +381,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#buuctf_misc36-51"><span class="toc-number">1.</span> <span class="toc-text"> BUUCTF_MISC(36-51)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#36gxyctf2019%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 36.[GXYCTF2019] 佛系青年</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#buuctf_misc36-51"><span class="toc-number">1.</span> <span class="toc-text"> BUUCTF_MISC(36-51)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#36gxyctf2019%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 36.[GXYCTF2019] 佛系青年</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#37%E5%88%B7%E6%96%B0%E8%BF%87%E7%9A%84%E5%9B%BE%E7%89%87"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 37. 刷新过的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#38bjdctf2020%E4%BD%A0%E7%8C%9C%E6%88%91%E6%98%AF%E4%B8%AA%E5%95%A5"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 38.[BJDCTF2020] 你猜我是个啥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#39snake"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 39.snake</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c"><span class="toc-number">1.1.</span> <span class="toc-text"> C</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#40%E7%A7%98%E5%AF%86%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 40. 秘密文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#41bjdctf2020%E9%B8%A1%E4%BD%A0%E5%A4%AA%E7%BE%8E"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 41.[BJDCTF2020] 鸡你太美</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42bjdctf2020just_a_rar"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 42.[BJDCTF2020]just_a_rar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43%E8%8F%9C%E5%88%80666"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 43. 菜刀 666</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44bjdctf2020%E4%B8%80%E5%8F%B6%E9%9A%9C%E7%9B%AE"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 44.[BJDCTF2020] 一叶障目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#45swpu2019%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 45.[SWPU2019] 神奇的二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#46bjdctf2020%E7%BA%B3%E5%B0%BC"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 46.[BJDCTF2020] 纳尼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#47hbnis2018excel%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.1.8.</span> <span class="toc-text"> 47.[HBNIS2018] excel 破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#48%E6%A2%85%E8%8A%B1%E9%A6%99%E4%B9%8B%E8%8B%A6%E5%AF%92%E6%9D%A5"><span class="toc-number">1.1.9.</span> <span class="toc-text"> 48. 梅花香之苦寒来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#49hbnis2018%E6%9D%A5%E9%A2%98%E4%B8%AD%E7%AD%89%E7%9A%84%E5%90%A7"><span class="toc-number">1.1.10.</span> <span class="toc-text"> 49.[HBNIS2018] 来题中等的吧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#50actf%E6%96%B0%E7%94%9F%E8%B5%9B2020outguess"><span class="toc-number">1.1.11.</span> <span class="toc-text"> 50.[ACTF 新生赛 2020] outguess</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#51%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B"><span class="toc-number">1.1.12.</span> <span class="toc-text"> 51. 谁赢了比赛？</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
@@ -357,21 +506,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
-</div>
-
-    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
   </li>
 
       
@@ -399,19 +534,7 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
-</div>
-
-    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
   </li>
 
       
@@ -425,7 +548,33 @@ RZero0ne =  = 答案在明天，每个明天</title>
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(36-51)/" title="BUUCTF_MISC(36-51)">BUUCTF_MISC(36-51)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
+</div>
+
+    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
   </li>
 
       
