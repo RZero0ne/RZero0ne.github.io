@@ -89,12 +89,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
           <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
         </ul>
       </div>
     </header>
@@ -131,13 +131,16 @@
             <li><a title="BUUCTF_MISC(1-20)" href="/2024/04/18/BUUCTF_MISC(1-20)/">BUUCTF_MISC(1-20)</a></li>
             <li><a title="BUUCTF_MISC(21-35)" href="/2024/04/18/BUUCTF_MISC(21-35)/">BUUCTF_MISC(21-35)</a></li>
             <li><a title="BUUCTF_MISC(36-51)" href="/2024/04/18/BUUCTF_MISC(36-51)/">BUUCTF_MISC(36-51)</a></li>
+            <li><a title="BUUCTF_MISC(52-69)" href="/2024/04/18/BUUCTF_MISC(52-69)/">BUUCTF_MISC(52-69)</a></li>
+            <li><a title="BUUCTF_MISC(70-81)" href="/2024/04/18/BUUCTF_MISC(70-81)/">BUUCTF_MISC(70-81)</a></li>
+            <li><a title="BUUCTF_MISC(82-97)" href="/2024/04/18/BUUCTF_MISC(82-97)/">BUUCTF_MISC(82-97)</a></li>
         </ul>
         <div class="meta footer">
           <span>
             <a href="/categories/Misc/" itemprop="url" title="Misc"><i class="ic i-flag"></i>Misc</a>
           </span>
           <span>
-            <i class="ic i-file"></i>3 篇文章
+            <i class="ic i-file"></i>6 篇文章
           </span>
         </div>
         <a href="/categories/Misc/course-1/" itemprop="url" title="做题记录" class="btn">more...</a>
@@ -145,9 +148,160 @@
   </div>
 </section>
 
+          
+<section class="item">
+  <div class="cover" data-background-image="/Reverse/course-2/cover.jpg">
+    <h2 class="title">二进制</h2>
+    <span>Reverse</span>
+  </div>
+  <div class="info">
+    <div class="ribbon"><a href="/categories/Reverse/course-2/" itemprop="url" title="二进制">二进制</a></div>
+    <div class="inner">
+        <ul class="posts">
+            <li><a title="HNCTF_2022_Week1 X0r" href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/">HNCTF_2022_Week1 X0r</a></li>
+        </ul>
+        <div class="meta footer">
+          <span>
+            <a href="/categories/Reverse/" itemprop="url" title="Reverse"><i class="ic i-flag"></i>Reverse</a>
+          </span>
+          <span>
+            <i class="ic i-file"></i>1 篇文章
+          </span>
+        </div>
+        <a href="/categories/Reverse/course-2/" itemprop="url" title="二进制" class="btn">more...</a>
+    </div>
+  </div>
+</section>
+
       </div>
     <h2 class="divider">文章列表</h2>
     <div class="segments posts">
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" itemprop="url" title="HNCTF_2022_Week1 X0r"><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/1.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-04-18 17:24:08">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-18T17:24:08+08:00">2024-04-18</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" itemprop="url" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></h3>
+    <div class="excerpt">
+        # [HNCTF 2022 Week1]X0r
+查壳，64
+打开 main 主函数，发现是 xor
+
+输入 flag, 检验长度，循环异或（和 0x34 异或再加 900）
+
+enc = [1022, 1003, 1003, 1019, 996, 1014, 979, 976, 904, 970, 1007,
+905, 971, 1007, 971, 904, 1007, 981, 985, 971, 977, 973]
+flag = [chr((enc[i]-900)^0x34) for i in range(len(enc))]
+print(’’.join(flag))
+# NSSCTF
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Reverse/course-2/" itemprop="url" title="二进制"><i class="ic i-flag"></i>二进制</a>
+      </span>
+    </div>
+    <a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" itemprop="url" title="HNCTF_2022_Week1 X0r" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/04/18/BUUCTF_MISC(82-97)/" itemprop="url" title="BUUCTF_MISC(82-97)"><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/1.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-04-18 17:22:27">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-18T17:22:27+08:00">2024-04-18</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/04/18/BUUCTF_MISC(82-97)/" itemprop="url" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></h3>
+    <div class="excerpt">
+        # BUUCTF_MISC(82-97)
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/MISC/" itemprop="url" title="MISC"><i class="ic i-flag"></i>MISC</a>
+      </span>
+    </div>
+    <a href="/2024/04/18/BUUCTF_MISC(82-97)/" itemprop="url" title="BUUCTF_MISC(82-97)" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/04/18/BUUCTF_MISC(70-81)/" itemprop="url" title="BUUCTF_MISC(70-81)"><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/1.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-04-18 17:18:36">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-18T17:18:36+08:00">2024-04-18</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/04/18/BUUCTF_MISC(70-81)/" itemprop="url" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></h3>
+    <div class="excerpt">
+        # BUUCTF_MISC(70-81)
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/MISC/" itemprop="url" title="MISC"><i class="ic i-flag"></i>MISC</a>
+      </span>
+    </div>
+    <a href="/2024/04/18/BUUCTF_MISC(70-81)/" itemprop="url" title="BUUCTF_MISC(70-81)" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/04/18/BUUCTF_MISC(52-69)/" itemprop="url" title="BUUCTF_MISC(52-69)"><img data-src="https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/1.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-04-18 17:15:12">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-18T17:15:12+08:00">2024-04-18</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/04/18/BUUCTF_MISC(52-69)/" itemprop="url" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></h3>
+    <div class="excerpt">
+        # BUUCTF_MISC(52-69)
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/MISC/" itemprop="url" title="MISC"><i class="ic i-flag"></i>MISC</a>
+      </span>
+    </div>
+    <a href="/2024/04/18/BUUCTF_MISC(52-69)/" itemprop="url" title="BUUCTF_MISC(52-69)" class="btn">more...</a>
+  </div>
+</article>
+
         
 <article class="item">
   <div class="cover">
@@ -292,19 +446,19 @@ flag
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">3</span>
+        <span class="count">7</span>
         <span class="name">文章</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">3</span>
+        <span class="count">5</span>
         <span class="name">分类</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">1</span>
+        <span class="count">2</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -396,7 +550,7 @@ flag
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
   </li>
 
       
@@ -424,7 +578,61 @@ flag
 <a href="/categories/MISC/" title="分类于 MISC">MISC</a>
 </div>
 
-    <span><a href="/2024/04/18/BUUCTF_MISC(1-20)/" title="BUUCTF_MISC(1-20)">BUUCTF_MISC(1-20)</a></span>
+    <span><a href="/2024/04/18/BUUCTF_MISC(82-97)/" title="BUUCTF_MISC(82-97)">BUUCTF_MISC(82-97)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(70-81)/" title="BUUCTF_MISC(70-81)">BUUCTF_MISC(70-81)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Reverse/" title="分类于 Reverse">Reverse</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Reverse/course-2/" title="分类于 二进制">二进制</a>
+</div>
+
+    <span><a href="/2024/04/18/%5BHNCTF%202022%20Week1%5DX0r/" title="HNCTF_2022_Week1 X0r">HNCTF_2022_Week1 X0r</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(52-69)/" title="BUUCTF_MISC(52-69)">BUUCTF_MISC(52-69)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Misc/" title="分类于 Misc">Misc</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Misc/course-1/" title="分类于 做题记录">做题记录</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/MISC/" title="分类于 MISC">MISC</a>
+</div>
+
+    <span><a href="/2024/04/18/BUUCTF_MISC(21-35)/" title="BUUCTF_MISC(21-35)">BUUCTF_MISC(21-35)</a></span>
   </li>
 
   </ul>

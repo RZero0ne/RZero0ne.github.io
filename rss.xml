@@ -5,9 +5,57 @@
         <link>https://RZero0ne.github.io</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Thu, 18 Apr 2024 17:11:36 +0800</pubDate>
-        <lastBuildDate>Thu, 18 Apr 2024 17:11:36 +0800</lastBuildDate>
+        <pubDate>Thu, 18 Apr 2024 17:24:08 +0800</pubDate>
+        <lastBuildDate>Thu, 18 Apr 2024 17:24:08 +0800</lastBuildDate>
         <category>MISC</category>
+        <category>Reverse</category>
+        <item>
+            <guid isPermalink="true">https://rzero0ne.github.io/2024/04/18/[HNCTF%202022%20Week1]X0r/</guid>
+            <title>HNCTF_2022_Week1 X0r</title>
+            <link>https://rzero0ne.github.io/2024/04/18/[HNCTF%202022%20Week1]X0r/</link>
+            <category>Reverse</category>
+            <pubDate>Thu, 18 Apr 2024 17:24:08 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;hnctf-2022-week1x0r&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hnctf-2022-week1x0r&#34;&gt;#&lt;/a&gt; [HNCTF 2022 Week1]X0r&lt;/h1&gt;
+&lt;p&gt;查壳，64&lt;/p&gt;
+&lt;p&gt;打开 main 主函数，发现是 xor&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps75.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;输入 flag, 检验长度，循环异或（和 0x34 异或再加 900）&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps76.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://nnnpc-1311441040.cos.ap-shanghai.myqcloud.com/wps77.jpg&#34; alt title=&#34;fig:&#34;&gt;&lt;/p&gt;
+&lt;p&gt;enc = [1022, 1003, 1003, 1019, 996, 1014, 979, 976, 904, 970, 1007,&lt;br&gt;
+905, 971, 1007, 971, 904, 1007, 981, 985, 971, 977, 973]&lt;br&gt;
+flag = [chr((enc[i]-900)^0x34) for i in range(len(enc))]&lt;br&gt;
+print(’’.join(flag))&lt;/p&gt;
+&lt;p x0r_1s_s0_easy&gt;# NSSCTF&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(82-97)/</guid>
+            <title>BUUCTF_MISC(82-97)</title>
+            <link>https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(82-97)/</link>
+            <category>MISC</category>
+            <pubDate>Thu, 18 Apr 2024 17:22:27 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;buuctf_misc82-97&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#buuctf_misc82-97&#34;&gt;#&lt;/a&gt; BUUCTF_MISC(82-97)&lt;/h1&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(70-81)/</guid>
+            <title>BUUCTF_MISC(70-81)</title>
+            <link>https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(70-81)/</link>
+            <category>MISC</category>
+            <pubDate>Thu, 18 Apr 2024 17:18:36 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;buuctf_misc70-81&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#buuctf_misc70-81&#34;&gt;#&lt;/a&gt; BUUCTF_MISC(70-81)&lt;/h1&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(52-69)/</guid>
+            <title>BUUCTF_MISC(52-69)</title>
+            <link>https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(52-69)/</link>
+            <category>MISC</category>
+            <pubDate>Thu, 18 Apr 2024 17:15:12 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;buuctf_misc52-69&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#buuctf_misc52-69&#34;&gt;#&lt;/a&gt; BUUCTF_MISC(52-69)&lt;/h1&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://rzero0ne.github.io/2024/04/18/BUUCTF_MISC(36-51)/</guid>
             <title>BUUCTF_MISC(36-51)</title>
